@@ -10,6 +10,7 @@ import { HttpExampleService } from '../http-example.service';
 
 export class MainCarComponent implements OnInit {
   data: any[] = [];
+  displayedColumns = ['brand', 'color', 'model'];
 
   constructor(private httpService: HttpExampleService) { }
 
