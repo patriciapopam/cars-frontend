@@ -14,9 +14,11 @@ export class MainDetailComponent implements OnInit {
   constructor(private httpService: HttpExampleService) { }
 
   ngOnInit(): void {
+    this.fetchData();
   }
 
-    fetchData() {
+  
+  fetchData() {
     this.httpService.fetchData().subscribe(
       (data) => {
         this.data = data;
