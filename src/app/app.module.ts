@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table'  
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -34,6 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
 
     MatButtonModule,
     MatSlideToggleModule,
+    MatIconModule,
+    MatToolbarModule,
 
     HttpClientModule,
     MatTableModule
