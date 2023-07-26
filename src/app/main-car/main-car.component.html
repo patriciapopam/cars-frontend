@@ -1,0 +1,22 @@
+<p>main-car works!</p>
+<button (click)="fetchData()">Fetch Data</button>
+
+<pre>{{data | json}}</pre>
+<table *ngIf="data.length > 0">
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Color</th>
+      <th>Model</th>
+      <!-- Add more table headers based on your JSON data structure -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of data">
+      <td>{{ car.brand }}</td>
+      <td>{{ car.color }}</td>
+      <td>{{ car.model }}</td>
+      <!-- Add more table cells based on your JSON data structure -->
+    </tr>
+  </tbody>
+</table>
