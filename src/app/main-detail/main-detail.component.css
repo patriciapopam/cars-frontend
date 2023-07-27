@@ -1,6 +1,49 @@
 table {
-    width: 80%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
   }
+
+.table-header {
+  background-color: rgba(134, 137, 188, 0.3);
+  font-size: 16px;
+  font-weight: bold;
+  color: #515a5a;
+  pointer-events: none;
+}
+
+table tr:not(thead):hover {
+  background-color: rgba(134, 137, 188, 0.3);
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: block;
+}
+
+.car-property {
+  padding: 0 5px;
+}
+
+.hidden {
+  display: none;
+  padding: none;
+  border: none;
+}

@@ -1,35 +1,80 @@
+<!--
 <table mat-table [dataSource]="data" class="mat-elevation-z8" *ngIf="data.length > 0">
+    
+    <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Brand </th>
+        <td mat-cell *matCellDef="let car"> {{car.brand}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="brand">
-    <th mat-header-cell *matHeaderCellDef> Brand </th>
-    <td mat-cell *matCellDef="let car"> {{car.brand}} </td>
-</ng-container>
+    <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Color </th>
+        <td mat-cell *matCellDef="let car"> {{car.color}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="color">
-    <th mat-header-cell *matHeaderCellDef> Color </th>
-    <td mat-cell *matCellDef="let car"> {{car.color}} </td>
-</ng-container>
+    <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Model </th>
+        <td mat-cell *matCellDef="let car"> {{car.model}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="model">
-    <th mat-header-cell *matHeaderCellDef> Model </th>
-    <td mat-cell *matCellDef="let car"> {{car.model}} </td>
-</ng-container>
+    <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Category </th>
+        <td mat-cell *matCellDef="let car"> {{car.category}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef> Category </th>
-    <td mat-cell *matCellDef="let car"> {{car.category}} </td>
-</ng-container>
+    <ng-container matColumnDef="engine">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Engine </th>
+        <td mat-cell *matCellDef="let car"> {{car.engine}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="engine">
-    <th mat-header-cell *matHeaderCellDef> Engine </th>
-    <td mat-cell *matCellDef="let car"> {{car.engine}} </td>
-</ng-container>
+    <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef ngClass="table-header"> Year </th>
+        <td mat-cell *matCellDef="let car"> {{car.year}} </td>
+    </ng-container>
 
-<ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef> Year </th>
-    <td mat-cell *matCellDef="let car"> {{car.year}} </td>
-</ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+-->
 
-<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<table mat-table
+       [dataSource]="data" multiTemplateDataRows
+       ngClass="mat-elevation-z8">
+  
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+    <th ngClass="table-header" mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let car"> {{car[column]}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions"></th>
+    <td mat-cell *matCellDef="let car">
+      <button mat-icon-button aria-label="expand row" (click)="(expandedCar = expandedCar === car ? null : car); $event.stopPropagation()">
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let car" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail" 
+           [@detailExpand]="car == expandedCar ? 'expanded' : 'collapsed'">
+        
+        <div class="car-property"> Engine: {{car.engine}} </div>
+        <div class="car-property"> Fuel Type: {{car.fuelType}} </div>
+        <div class="car-property"> Cylinder Capacity: {{car.cylinderCapacity}} </div>
+        <div class="car-property"> Torque: {{car.torque}} </div>
+        <div class="car-property"> Horse Power: {{car.horsePower}} </div>
+        <div class="car-property"> Transmission: {{car.transmission}} </div>
+        
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let car; columns: displayedColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedCar === car"
+      (click)="expandedCar = expandedCar === car ? null : car">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" style="width:0%"></tr>
 </table>
