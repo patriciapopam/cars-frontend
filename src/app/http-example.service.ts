@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 
 
@@ -9,24 +9,19 @@ import { Observable, from } from 'rxjs';
 })
 
 export class HttpExampleService {
-  private backendUrl = 'http://localhost:8080/data/getAllCars';
+  private backendUrl = 'http://localhost:8080/data';
 
   constructor(private http: HttpClient) { }
 
   fetchData(): Observable<any[]> {
-    return this.http.get<any[]>(this.backendUrl);
-    /*
-    return from(
-      fetch(
-        this.backendUrl, // the url you are trying to access
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          method: 'GET', // GET, POST, PUT, DELETE
-          mode: 'no-cors' // the most important option
-        }
-      ));
-    */
+    return this.http.get<any[]>(this.backendUrl + '/getAllCars');
   }
+
+  deleteData(data:any): Observable<any> {
+    const httpOptions = {
+      body: data
+    };
+    return this.http.delete<any>(this.backendUrl + '/car', httpOptions);
+  }
+  
 } 

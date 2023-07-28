@@ -21,7 +21,7 @@ export class MainDetailComponent implements OnInit {
   displayedColumns = ['brand', 'color', 'model', 'category', 'year', 'country'];
 
   expandedCar: any = null;
-  
+
   selection = new SelectionModel<any>(true, []);
   //[{"id":"111","brand":"Dacia","color":"blue","model":"Duster","category":"hatchback","engine":"petrol","year":"2017","fuelType":"petrol","cylinderCapacity":"100","torque":"100","horsePower":"100","country":"romania","transmission":"100"},
   //id
@@ -40,6 +40,22 @@ export class MainDetailComponent implements OnInit {
         this.data = data;
       }
     );
+  }
+
+  pasttest: any = null;
+  test: any = null;
+
+  deleteSelected() {
+    this.pasttest = this.test;
+    this.test = this.selection.selected;
+    
+    this.test.forEach( (element: any) => {
+      this.httpService.deleteData(element).subscribe(
+        (data) => {
+          this.fetchData();
+        }
+      );
+    });
   }
 
   toggleAllRows() {
