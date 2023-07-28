@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SelectionModel} from '@angular/cdk/collections';
 import { HttpClientService } from '../services/HttpClientService/HttpClientService';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-detail',
@@ -23,10 +24,6 @@ export class MainDetailComponent implements OnInit {
   expandedCar: any = null;
 
   selection = new SelectionModel<any>(true, []);
-  //[{"id":"111","brand":"Dacia","color":"blue","model":"Duster","category":"hatchback","engine":"petrol","year":"2017","fuelType":"petrol","cylinderCapacity":"100","torque":"100","horsePower":"100","country":"romania","transmission":"100"},
-  //id
-  //brand, model, category, color, year, country
-  //engine, fuelType, cylinderCapacity, torque, horsePower, transmission
 
   constructor(private httpService: HttpClientService) { }
 
@@ -38,6 +35,9 @@ export class MainDetailComponent implements OnInit {
     this.httpService.fetchData().subscribe(
       (data) => {
         this.data = data;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.status);
       }
     );
   }
