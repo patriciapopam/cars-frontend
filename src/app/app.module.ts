@@ -24,6 +24,9 @@ import { AuthorizationHttpInterceptorService } from './services/AuthHttpIntercep
 import { SpinnerComponent } from './loading-spinner/spinner/spinner.component';
 import { SpinnerService } from './services/SpinnerService/spinner-service.service';
 import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor/spinner-httpinterceptor.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarHttpService } from './services/SnackBarHttpInterceptor/snackbar-http.service';
+import { CustomSnackbarComponent } from './custom-snackbar/custom-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor
     MatCheckboxModule,
     HttpClientModule,
     MatTableModule,
-    SpinnerComponent
+    SpinnerComponent,
+    MatSnackBarModule,
+    CustomSnackbarComponent
   ],
   providers: [ 
     SpinnerService,
@@ -61,6 +66,11 @@ import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerHttpinterceptorService,
       multi:true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SnackbarHttpService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

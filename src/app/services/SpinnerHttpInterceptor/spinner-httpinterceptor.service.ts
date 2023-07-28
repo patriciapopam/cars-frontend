@@ -8,7 +8,6 @@ import {
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { SpinnerService } from '../SpinnerService/spinner-service.service';
-import { LocalStorageService } from '../LocalStorageService/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,7 @@ import { LocalStorageService } from '../LocalStorageService/local-storage.servic
  */
 export class SpinnerHttpinterceptorService implements HttpInterceptor{
 
-  constructor(private spinnerService:SpinnerService, private localStorageService:LocalStorageService) { }
+  constructor(private spinnerService:SpinnerService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     this.spinnerService.show();
