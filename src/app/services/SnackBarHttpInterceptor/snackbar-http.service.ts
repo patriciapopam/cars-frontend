@@ -24,10 +24,10 @@ export class SnackbarHttpService {
     return next.handle(req).pipe(
       tap(
         (event: HttpEvent<any>): void => {
-          if (event instanceof HttpResponse && event.status >= 200 && event.status < 300) {
-            // Show a success snackbar for status codes in the range 200-299
-            this.snackbarService.showSuccessSnackbar(`Request finished with http code ${event.status}`, config);
-          }
+          // // Show a success snackbar for status codes in the range 200-299
+          // if (event instanceof HttpResponse && event.status >= 200 && event.status < 300) {
+          //   this.snackbarService.showSuccessSnackbar(`Request finished with http code ${event.status}`, config);
+          // }
 
         },
         (error: HttpErrorResponse) => {
