@@ -8,7 +8,7 @@ import { Observable, from } from 'rxjs';
   providedIn: 'root'
 })
 
-export class HttpExampleService {
+export class HttpClientService {
   private backendUrl = 'http://localhost:8080/data';
 
   constructor(private http: HttpClient) { }

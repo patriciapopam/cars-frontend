@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SelectionModel} from '@angular/cdk/collections';
-import { HttpExampleService } from '../http-example.service';
+import { HttpClientService } from '../services/HttpClientService/HttpClientService';
 
 @Component({
   selector: 'app-main-detail',
@@ -28,7 +28,7 @@ export class MainDetailComponent implements OnInit {
   //brand, model, category, color, year, country
   //engine, fuelType, cylinderCapacity, torque, horsePower, transmission
 
-  constructor(private httpService: HttpExampleService) { }
+  constructor(private httpService: HttpClientService) { }
 
   ngOnInit(): void {
     this.fetchData();
