@@ -18,8 +18,12 @@ import { MatTableModule } from '@angular/material/table'
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AuthorizationHttpInterceptorService } from './services/AuthHttpInterceptor/auth-http-interceptor.service';
+import { SpinnerComponent } from './loading-spinner/spinner/spinner.component';
+import { SpinnerService } from './services/SpinnerService/spinner-service.service';
+import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor/spinner-httpinterceptor.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MainCarComponent,
     FooterComponent,
     CarDetailComponent,
-    MainDetailComponent
+    MainDetailComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -41,11 +46,23 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     MatToolbarModule,
     MatCheckboxModule,
-
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    SpinnerComponent
   ],
-  providers: [],
+  providers: [ 
+    SpinnerService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationHttpInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerHttpinterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

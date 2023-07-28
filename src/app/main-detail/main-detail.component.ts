@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SelectionModel} from '@angular/cdk/collections';
-import { HttpExampleService } from '../http-example.service';
+import { HttpClientService } from '../services/HttpClientService/HttpClientService';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -25,7 +25,7 @@ export class MainDetailComponent implements OnInit {
 
   selection = new SelectionModel<any>(true, []);
 
-  constructor(private httpService: HttpExampleService) { }
+  constructor(private httpService: HttpClientService) { }
 
   ngOnInit(): void {
     this.fetchData();

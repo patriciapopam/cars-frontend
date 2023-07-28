@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpExampleService } from './http-example.service';
+import { SpinnerService } from './spinner-service.service';
 
-describe('HttpExampleService', () => {
-  let service: HttpExampleService;
+describe('LoadingServiceService', () => {
+  let service: SpinnerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpExampleService);
+    service = TestBed.inject(SpinnerService);
   });
 
   it('should be created', () => {
