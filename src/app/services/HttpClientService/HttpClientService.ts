@@ -8,6 +8,9 @@ import { Observable, from } from 'rxjs';
   providedIn: 'root'
 })
 
+/**
+ * Service for making HTTP requests using Angular's HttpClient module.
+ */
 export class HttpClientService {
   private backendUrl = 'http://localhost:8080/data';
 

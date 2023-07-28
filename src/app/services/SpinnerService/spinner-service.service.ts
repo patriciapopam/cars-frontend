@@ -4,19 +4,18 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+/** 
+ * Service for managing a loading spinner.
+ */
 export class SpinnerService {
   private loadingSubject = new Subject<boolean>();
   loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
   show() {
-    console.log('showing spinner');
-    console.log(this.loading$);
     this.loadingSubject.next(true);
   }
 
   hide() {
-    console.log('hiding spinner');
-    console.log(this.loading$);
     this.loadingSubject.next(false);
   }
 }

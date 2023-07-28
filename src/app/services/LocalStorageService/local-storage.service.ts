@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * A service for interacting with the browser's local storage.
+ */
 export class LocalStorageService {
   constructor() {}
 

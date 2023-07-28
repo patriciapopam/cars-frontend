@@ -8,17 +8,21 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { SpinnerService } from '../LoadingService/loading-service.service';
 import { LocalStorageService } from '../LocalStorageService/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * An HTTP interceptor that adds an authorization header to outgoing requests using a JWT token stored in local storage.
+ */
+
 export class AuthorizationHttpInterceptorService implements HttpInterceptor{
 
-  constructor(private spinnerService:SpinnerService, private localStorageService:LocalStorageService) { }
+  constructor(private localStorageService:LocalStorageService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.spinnerService.show();
+    
 
     const authToken= this.localStorageService.getItem("JWT Token");
 
@@ -29,13 +33,6 @@ export class AuthorizationHttpInterceptorService implements HttpInterceptor{
     });
 
     // Continue with the request by calling the next interceptor or the final HTTP handler
-    return next.handle(authReq).pipe(
-      tap((event: HttpEvent<any>) => {
-        // Check if the event is an HTTP response
-        if (event instanceof HttpResponse) {
-          // add snackbar checks
-          this.spinnerService.hide();
-        }
-      }));
+    return next.handle(authReq);
   }
 }
