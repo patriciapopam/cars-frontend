@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { HttpClientModule } from '@angular/common/http';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     MatIconModule,
     MatToolbarModule,
+    MatCheckboxModule,
 
     HttpClientModule,
     MatTableModule
