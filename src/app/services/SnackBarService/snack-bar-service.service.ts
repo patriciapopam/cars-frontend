@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { CustomSnackbarComponent } from 'src/app/custom-snackbar/custom-snackbar.component';
+import { CustomSnackbarComponent } from 'src/app/components/custom-snackbar/custom-snackbar.component';
 
 @Injectable({
   providedIn: 'root'
