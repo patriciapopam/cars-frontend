@@ -1,0 +1,46 @@
+<h3>
+    List of cars:
+</h3>
+
+<div>
+    <mat-form-field>
+        <mat-label>Brands</mat-label>
+        <mat-select [formControl]="brands">
+            <mat-option *ngFor="let brand of brandList" [value]="brand">{{brand}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select [formControl]="categories">
+            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Model</mat-label>
+        <mat-select [formControl]="models">
+            <mat-option *ngFor="let model of modelList" [value]="model">{{model}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Year</mat-label>
+        <mat-select [formControl]="years">
+            <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+
+
+
+<div id="buttons">
+    <div id="buttons">
+        <button mat-raised-button color="primary" (click)="applyFilter()">Filter</button>
+        <button mat-raised-button color="primary" (click)="clearFilter()">Clear</button>
+    </div>
+</div>

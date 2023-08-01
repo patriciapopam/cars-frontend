@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarAppComponent } from './components/car-app/car-app.component';
@@ -37,6 +38,9 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FilterListComponent} from './components/filter-list/filter-list.component';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,9 +53,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MainDetailComponent,
     CarListComponent,
     MainListComponent,
+    FilterListComponent,
     
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -66,8 +72,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SpinnerComponent,
     MatSnackBarModule,
     CustomSnackbarComponent,
+    ReactiveFormsModule,
 
-    MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule
+    MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatSelectModule,
+    
   ],
   providers: [ 
     SpinnerService,
