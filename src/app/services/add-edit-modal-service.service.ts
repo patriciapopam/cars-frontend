@@ -33,6 +33,7 @@ export class AddEditModalService {
     this.dialog.open(AddEditModalComponent, {
       data: dialogData,
     });
+    console.log('openAddDialog')
   }
 
   openEditDialog(carData: CarObject): void {

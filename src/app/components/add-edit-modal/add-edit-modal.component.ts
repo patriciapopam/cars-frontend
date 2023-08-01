@@ -34,10 +34,10 @@ export class AddEditModalComponent {
     }
   }
 
-  
+  //TODO: Find out why data is not being binded to data.car
     onSubmitClick(): void {
       console.log('send request');
-      this.HttpClient.deleteData({ id: '222' }).subscribe(
+      this.HttpClient.deleteData(this.data.car).subscribe(
         (response) => {
           console.log('Delete Request Response:', response);
           this.dialogRef.close();
@@ -51,5 +51,9 @@ export class AddEditModalComponent {
 
   onCancelClick(): void {
     this.dialogRef.close();
+  }
+
+  consoleCar():void{
+    console.log(this.data.car);
   }
 }
