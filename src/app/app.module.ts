@@ -31,6 +31,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
 import { AddEditModalButtonComponent } from './components/add-edit-modal-button/add-edit-modal-button.component';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { AddEditModalButtonComponent } from './components/add-edit-modal-button/
     CarDetailComponent,
     MainDetailComponent,
     CarListComponent,
+    AddEditModalComponent,
     MainListComponent,
   ],
   imports: [
@@ -59,10 +62,14 @@ import { AddEditModalButtonComponent } from './components/add-edit-modal-button/
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatDialogModule,
     MatPaginatorModule,
     SpinnerComponent,
     CustomSnackbarComponent,
-    AddEditModalComponent,
+    
     AddEditModalButtonComponent
   ],
   providers: [ 

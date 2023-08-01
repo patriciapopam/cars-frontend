@@ -1,38 +1,30 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
-import {NgFor} from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
 import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
 
 @Component({
   selector: 'app-add-edit-modal',
   templateUrl: './add-edit-modal.component.html',
-  styleUrls: ['./add-edit-modal.component.css'],
-  standalone: true,
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule,NgFor],
+  styleUrls: ['./add-edit-modal.component.css']
 })
-
-export class AddEditModalComponent  {
+export class AddEditModalComponent {
   carProperties: { name: string; value: any }[] = [];
-  submitFormText:string;
+  submitFormText: string;
+
   constructor(
     public dialogRef: MatDialogRef<AddEditModalComponent>,
-    private HttpClient:HttpClientService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) 
-    {
-    this.carProperties=this.getCarProperties();
-    if (data.mode==="add") this.submitFormText="Add car"
-    else this.submitFormText="Edit car"
+    private HttpClient: HttpClientService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
+    this.carProperties = this.getCarProperties();
+    this.submitFormText = data.mode === 'add' ? 'Add car' : 'Edit car';
   }
-  
+
   getCarProperties(): { name: string; value: any }[] {
     return Object.entries(this.data.car).map(([name, value]) => ({ name, value }));
   }
-  
+
   getInputType(value: any): string {
     // Use the typeof operator to check the type of the value
     if (typeof value === 'number') {
@@ -42,14 +34,22 @@ export class AddEditModalComponent  {
     }
   }
 
-    onSubmitClick():void{
-    console.log("send request")
-    this.HttpClient.getCarData();
-    this.dialogRef.close();
-  }
+  
+    onSubmitClick(): void {
+      console.log('send request');
+      this.HttpClient.deleteData({ id: '222' }).subscribe(
+        (response) => {
+          console.log('Delete Request Response:', response);
+          this.dialogRef.close();
+        },
+        (error) => {
+          console.error('Error making DELETE request:', error);
+          this.dialogRef.close();
+        }
+      );
+    }
 
-
-  onCancelClick():void{
+  onCancelClick(): void {
     this.dialogRef.close();
   }
 }
