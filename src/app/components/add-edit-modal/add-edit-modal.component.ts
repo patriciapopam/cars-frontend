@@ -20,8 +20,10 @@ export interface DialogData {
   imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule,NgFor],
 })
 export class AddEditModalComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<AddEditModalComponent>,@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  carProperties: { name: string; value: any }[] = [];
+  constructor(public dialogRef: MatDialogRef<AddEditModalComponent>,@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    this.carProperties=this.getCarProperties();
+   }
   ngOnInit(): void {
     console.log("modal initiated")
   }
@@ -34,7 +36,14 @@ export class AddEditModalComponent implements OnInit {
     console.log("hello");
   
   }
-
+  getInputType(value: any): string {
+    // Use the typeof operator to check the type of the value
+    if (typeof value === 'number') {
+      return 'number'; // If the property type is number, set the input type to "number"
+    } else {
+      return 'text'; // If the property type is anything other than number, set the input type to "text"
+    }
+  }
   onNoClick():void{
     console.log("on no clicked");
   }

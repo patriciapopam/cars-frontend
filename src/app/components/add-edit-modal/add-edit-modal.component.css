@@ -1,0 +1,11 @@
+.add-edit-modal{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.form-container{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}

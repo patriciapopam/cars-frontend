@@ -1,11 +1,16 @@
-<h2 mat-dialog-title>{{data.title}}</h2>
-<div mat-dialog-content>
-    <li *ngFor="let prop of getCarProperties()">
-        {{ prop.name }}: {{ prop.value }}
-      </li>
+<div class="add-edit-modal">
+    <h2 mat-dialog-title>{{data.title}}</h2>
+    <div mat-dialog-content class="form-container">
+        <ng-container *ngFor="let prop of carProperties">
+            <mat-form-field>
+                <mat-label>{{ prop.name }}</mat-label>
+                <input matInput [attr.type]="getInputType(prop.value)" [(ngModel)]="prop.value" name="{{ prop.name }}" placeholder="{{ prop.name }}">
+            </mat-form-field>
+          </ng-container>
+    </div>
+      
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+      </div>
 </div>
-  
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
-  </div>
