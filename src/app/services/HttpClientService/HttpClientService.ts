@@ -20,6 +20,10 @@ export class HttpClientService {
     return this.http.get<any[]>(this.backendUrl + '/getAllCars');
   }
 
+  getCarData(): Observable<any[]> {
+    return this.http.get<any[]>(this.backendUrl + '/getAllCarSummary');
+  }
+
   deleteData(data:any): Observable<any> {
     const httpOptions = {
       body: data

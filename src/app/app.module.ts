@@ -27,6 +27,16 @@ import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarHttpService } from './services/SnackBarHttpInterceptor/snackbar-http.service';
 import { CustomSnackbarComponent } from './components/custom-snackbar/custom-snackbar.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { MainListComponent } from './components/main-list/main-list.component';
+
+
+import {AfterViewInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -37,6 +47,8 @@ import { CustomSnackbarComponent } from './components/custom-snackbar/custom-sna
     FooterComponent,
     CarDetailComponent,
     MainDetailComponent,
+    CarListComponent,
+    MainListComponent,
     
   ],
   imports: [
@@ -53,7 +65,9 @@ import { CustomSnackbarComponent } from './components/custom-snackbar/custom-sna
     MatTableModule,
     SpinnerComponent,
     MatSnackBarModule,
-    CustomSnackbarComponent
+    CustomSnackbarComponent,
+
+    MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule
   ],
   providers: [ 
     SpinnerService,
