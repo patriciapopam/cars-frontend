@@ -27,8 +27,7 @@ export class MainListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.carList.paginator = this.paginator;
-    this.carList.sort = this.sort;
+
   }
 
 
@@ -45,11 +44,18 @@ export class MainListComponent implements OnInit {
     this.httpService.getCarData().subscribe(
       (carList) => {
         this.carList = new MatTableDataSource(carList);
+        this.carList.paginator = this.paginator;
+        this.carList.sort = this.sort;
       },
       (error: HttpErrorResponse) => {
         console.log(error.status);
       }
     );
+  }
+
+  viewCarDetails(id: any) {
+    console.log("clicked view car detail");
+    alert(id);
   }
 
 }

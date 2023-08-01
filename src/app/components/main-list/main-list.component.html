@@ -42,7 +42,7 @@
         <ng-container matColumnDef="action2">
             <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> </th>
             <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon">
+                <button mat-icon-button color="primary" aria-label="Example icon button with a menu icon" (click)="viewCarDetails(row.id)">
                     <mat-icon>menu</mat-icon>
                 </button>
             </td>
