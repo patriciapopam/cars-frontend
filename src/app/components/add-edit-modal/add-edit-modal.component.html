@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<div mat-dialog-content>
+    <li *ngFor="let prop of getCarProperties()">
+        {{ prop.name }}: {{ prop.value }}
+      </li>
+</div>
+  
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+  </div>

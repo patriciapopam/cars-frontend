@@ -27,6 +27,8 @@ import { SpinnerHttpinterceptorService } from './services/SpinnerHttpInterceptor
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarHttpService } from './services/SnackBarHttpInterceptor/snackbar-http.service';
 import { CustomSnackbarComponent } from './components/custom-snackbar/custom-snackbar.component';
+import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
+import { AddEditModalButtonComponent } from './components/add-edit-modal-button/add-edit-modal-button.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,10 @@ import { CustomSnackbarComponent } from './components/custom-snackbar/custom-sna
     MatTableModule,
     SpinnerComponent,
     MatSnackBarModule,
-    CustomSnackbarComponent
+    CustomSnackbarComponent,
+    AddEditModalComponent,
+    AddEditModalButtonComponent,
+    
   ],
   providers: [ 
     SpinnerService,
