@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AddEditModalButtonComponent} from '../add-edit-modal-button/add-edit-modal-button.component'
 @Component({
   selector: 'app-main-car',
   templateUrl: './main-car.component.html',
