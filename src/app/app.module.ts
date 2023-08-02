@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarAppComponent } from './components/car-app/car-app.component';
@@ -33,6 +35,9 @@ import { AddEditModalComponent } from './components/add-edit-modal/add-edit-moda
 import { AddEditModalButtonComponent } from './components/add-edit-modal-button/add-edit-modal-button.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import {FilterListComponent} from './components/filter-list/filter-list.component';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,8 +51,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     CarListComponent,
     AddEditModalComponent,
     MainListComponent,
+    FilterListComponent,
+    
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -69,8 +77,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     SpinnerComponent,
     CustomSnackbarComponent,
-    
+    ReactiveFormsModule,
+
+    MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatSelectModule,
     AddEditModalButtonComponent
+    
   ],
   providers: [ 
     SpinnerService,

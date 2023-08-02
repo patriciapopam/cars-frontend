@@ -31,4 +31,13 @@ export class HttpClientService {
     return this.http.delete<any>(this.backendUrl + '/car', httpOptions);
   }
   
+  filterByMultipleSelection(filterCriteria: any): Observable<any[]> {
+    const httpOptions = {
+      'brand': filterCriteria.brand,
+      'model': filterCriteria.model,
+      'category': filterCriteria.category,
+      'year': filterCriteria.year
+    };
+    return this.http.post<any[]>(this.backendUrl + '/filterCarByMultipleSelection', httpOptions);
+  }
 } 
