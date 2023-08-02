@@ -33,9 +33,11 @@ export class AddEditModalComponent {
       return 'text'; // If the property type is anything other than number, set the input type to "text"
     }
   }
-
+    //TODO: change the endpoints to edit and add
     onSubmitClick(): void {
       console.log('send request');
+      if(this.data.mode === 'add')
+      {
       this.HttpClient.deleteData(this.data.car).subscribe(
         (response) => {
           console.log('Delete Request Response:', response);
@@ -47,7 +49,22 @@ export class AddEditModalComponent {
         }
       );
     }
-
+    else if (this.data.mode === 'edit') {
+      this.HttpClient.deleteData(this.data.car).subscribe(
+        (response) => {
+          console.log('Put Request Response:', response);
+          this.dialogRef.close();
+        },
+        (error) => {
+          console.error('Error making PUT request:', error);
+          this.dialogRef.close();
+        }
+      );
+    }
+    else{
+      console.log('Error: Invalid mode');
+    }
+  }
   onCancelClick(): void {
     this.dialogRef.close();
   }
