@@ -33,7 +33,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
 import { AddEditModalButtonComponent } from './components/add-edit-modal-button/add-edit-modal-button.component';
-import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import {FilterListComponent} from './components/filter-list/filter-list.component';
 import {MatSelectModule} from '@angular/material/select';
