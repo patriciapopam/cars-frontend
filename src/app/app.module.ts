@@ -38,6 +38,7 @@ import {FilterListComponent} from './components/filter-list/filter-list.componen
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     MainListComponent,
     FilterListComponent,
     ConfirmationModalComponent,
+    SideNavbarComponent,
     
   ],
   imports: [
