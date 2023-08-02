@@ -1,6 +1,7 @@
 /* add-edit-modal.component.css */
 .form-container {
     display: flex;
+
     flex-wrap: wrap;
     gap: 2%; /* Space between columns */
   }
@@ -9,7 +10,31 @@
     flex-basis: calc(50% - 1%); /* Adjust the width of each input to create space between columns */
     margin-bottom: 2%; /* Add space between rows */
   }
+
+  .edit-modal-title{
+    display: flex;
+    justify-content: center;
+  }
+  .key-value-pair{
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    padding: 2%;
+  }
+  .key{
+    font-weight: 450;
+  }
+  .list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 8%;
+  }
   
+  .add-edit-modal{
+    max-width: 35vw;
+  }
   /* Media query for larger screens */
   @media screen and (min-width: 2000px) {
     .form-container mat-form-field {

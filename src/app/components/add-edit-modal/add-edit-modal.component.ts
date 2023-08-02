@@ -1,32 +1,36 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
 import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-modal',
   templateUrl: './add-edit-modal.component.html',
   styleUrls: ['./add-edit-modal.component.css']
 })
-export class AddEditModalComponent {
+export class AddEditModalComponent implements OnInit {
   carProperties: { name: string; value: any }[] = [];
   submitFormText: string;
-
+  submitFormTooltip:string;
   firstDisable: boolean;
+  formGroup: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<AddEditModalComponent>,
     private HttpClient: HttpClientService,
+    private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-    if (data.mode === 'edit') { 
-      this.firstDisable = true;
-    } else {
-      this.firstDisable = false;
-    }
-
+  ) { }
+  ngOnInit(): void {
+    this.firstDisable = this.data.mode === 'edit' ? true : false;
     this.carProperties = this.getCarProperties();
-    this.submitFormText = data.mode === 'add' ? 'Add car' : 'Edit car';
+    this.submitFormText = this.data.mode === 'add' ? 'Add car' : 'Edit car';
+    this.submitFormTooltip = this.data.mode === 'add' ? 'Add a new car' : 'Edit this car';
+    this.formGroup = this.formBuilder.group({});
+    this.carProperties.forEach((prop) => {
+      this.formGroup.addControl(prop.name, this.formBuilder.control('', [Validators.maxLength(50),Validators.minLength(2)]));
+    });
   }
 
   getCarProperties(): { name: string; value: any }[] {

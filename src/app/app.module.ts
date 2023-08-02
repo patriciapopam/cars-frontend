@@ -38,6 +38,7 @@ import {FilterListComponent} from './components/filter-list/filter-list.componen
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     SpinnerComponent,
     CustomSnackbarComponent,
     ReactiveFormsModule,
-
+    MatTooltipModule,
     MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatSelectModule,
     AddEditModalButtonComponent
