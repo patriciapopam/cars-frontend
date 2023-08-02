@@ -7,10 +7,11 @@
         <input
           matInput
           [attr.type]="getInputType(prop.value)"
-          [ngModel]="prop.value"
-          (ngModelChange)="prop.value = $event"
+          [(ngModel)]="data.car[prop.name]"
+          [ngModelOptions]="{standalone: true}"
           name="{{ prop.name }}"
           placeholder="{{ prop.name }}"
+          required="true"
         />
       </mat-form-field>
     </ng-container>

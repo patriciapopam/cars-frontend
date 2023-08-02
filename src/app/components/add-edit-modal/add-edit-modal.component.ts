@@ -34,7 +34,6 @@ export class AddEditModalComponent {
     }
   }
 
-  //TODO: Find out why data is not being binded to data.car
     onSubmitClick(): void {
       console.log('send request');
       this.HttpClient.deleteData(this.data.car).subscribe(
