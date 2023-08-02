@@ -6,12 +6,12 @@ body {
     align-items: center;
 }
 
-div {
+.matformsfilterlist {
     display: flex;
     justify-content: space-between;
 }
 
-div#buttons {
+.matformsfilterlist#buttons {
     display: flex;
     gap: 20px;
     justify-content: flex-end;

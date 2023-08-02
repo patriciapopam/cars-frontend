@@ -6,9 +6,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
 import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
-import { CarObject } from 'src/models/CarObject';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { FormControl } from '@angular/forms';
+import { CarObject } from 'src/models/CarObject';
 
 @Component({
   selector: 'app-main-list',
@@ -19,7 +20,7 @@ export class MainListComponent implements OnInit {
 
   carList: MatTableDataSource<any>;
   displayedColumns: string[] = ['brand', 'category', 'model', 'year', 'action_delete', 'action_edit'];
-
+  public isFilterShown: boolean = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -36,6 +37,34 @@ export class MainListComponent implements OnInit {
       this.carList.paginator = this.paginator;
       this.carList.sort = this.sort;  
     });
+
+    this.filterCarsService.updatedBrandList$.subscribe((data) => {
+      this.brandList = data;
+    });
+
+    this.filterCarsService.updatedCategoryList$.subscribe((data) => {
+      this.categoryList = data;
+    });
+
+    this.filterCarsService.updatedModelList$.subscribe((data) => {
+      this.modelList = data;
+    });
+
+    this.filterCarsService.updatedYearList$.subscribe((data) => {
+      this.yearList = data;
+    });
+  }
+
+  maximizeFilterMenu() {
+    this.isFilterShown = true;
+  }
+
+  minimizeFilterMenu() {
+    this.isFilterShown = false;
+  }
+
+  addCar() {
+    
   }
 
   applyFilter(event: Event) {
@@ -78,13 +107,13 @@ export class MainListComponent implements OnInit {
   }
 
   viewCarDetails(car: any) {
-    var carDetails = <CarObject>{};
+    var carDetail = <CarObject>{};
 
     this.httpService.getCarDataById(car.id).subscribe(
       (car) => {
-        carDetails = car;
-        console.log(carDetails);
-        this.addEditModalService.openEditDialog(carDetails);
+        carDetail = car;
+        console.log(carDetail);
+        this.addEditModalService.openEditDialog(carDetail);
         this.addEditModalService.dialogRef?.afterClosed().subscribe((result) => {
           if (result) {
             this.getCarList();
@@ -112,9 +141,63 @@ export class MainListComponent implements OnInit {
             console.log(error.status);
           }
         );
-        //result = false;
       }
     });
   }
 
+  filteredCarList: any[] = [];
+
+  brands = new FormControl('');
+  categories = new FormControl('');
+  models = new FormControl('');
+  years = new FormControl('');
+
+  brandList: string[];
+  categoryList: string[];
+  modelList: string[];
+  yearList: string[];
+
+  applyAdvancedFilter() {
+    const filteredCar: CarSummary = {
+      brand: this.brands.value,
+      category: this.categories.value,
+      model: this.models.value,
+      year: this.years.value
+    };
+
+    this.httpService.filterByMultipleSelection(filteredCar).subscribe(
+      (carList) => {
+        this.filteredCarList = carList;
+        this.filterCarsService.updateData(this.filteredCarList);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.status);
+      }
+    );
+  }
+
+  clearFilter() {
+    this.brands.reset();
+    this.categories.reset();
+    this.models.reset();
+    this.years.reset();
+
+    this.httpService.getCarData().subscribe(
+      (carList) => {
+        this.filteredCarList = carList;
+        this.filterCarsService.updateData(this.filteredCarList);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.status);
+      }
+    );
+  }
+
+}
+
+interface CarSummary {
+  brand: string | null;
+  category: string | null;
+  model: string | null;
+  year: string | null;
 }

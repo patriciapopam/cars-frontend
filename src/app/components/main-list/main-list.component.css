@@ -37,3 +37,57 @@ th {
     margin-top: 2%;
     margin-bottom: 2%;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matformsfilterlist {
+    display: flex;
+    justify-content: space-between;
+}
+
+.matformsfilterlist#buttons {
+    display: flex;
+    gap: 2%;
+    justify-content: flex-end;
+}
+
+.carListTitle {
+    text-align: center;
+}
+
+.carFilter {
+    padding-bottom: 2%;
+}
+
+.generalFilter {
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
+.customFilter {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.tableFilterHeader {
+    padding-left: 1%;
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addCar {
+    padding-left: 1%;
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
