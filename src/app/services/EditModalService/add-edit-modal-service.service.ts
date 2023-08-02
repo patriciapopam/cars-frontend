@@ -1,6 +1,6 @@
 // dialog.service.ts
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddEditModalComponent } from 'src/app/components/add-edit-modal/add-edit-modal.component';
 import { DialogData } from '../../../models/DialogData';
 import { CarObject } from 'src/models/CarObject';
@@ -9,6 +9,7 @@ import { CarObject } from 'src/models/CarObject';
   providedIn: 'root',
 })
 export class AddEditModalService {
+  dialogRef: MatDialogRef<AddEditModalComponent> | undefined;
   constructor(private dialog: MatDialog) {}
 
   openAddDialog(): void {
@@ -31,9 +32,10 @@ export class AddEditModalService {
         transmission: '',
       },
     };
-    this.dialog.open(AddEditModalComponent, {
-      data: dialogData,
+    this.dialogRef = this.dialog.open(AddEditModalComponent, {       
+      data: dialogData   
     });
+
     console.log('openAddDialog')
   }
 
@@ -44,8 +46,8 @@ export class AddEditModalService {
       mode: 'edit',
       car: { ...carData}, // Copy the carData object to avoid modifying the original data
     };
-    this.dialog.open(AddEditModalComponent, {
-      data: dialogData,
+    this.dialogRef = this.dialog.open(AddEditModalComponent, {       
+      data: dialogData   
     });
   }
 }

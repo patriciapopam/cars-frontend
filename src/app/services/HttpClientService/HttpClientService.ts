@@ -40,6 +40,15 @@ export class HttpClientService {
     };
     return this.http.delete<any>(this.backendUrl + '/car', httpOptions);
   }
+
+  editCar(car: CarObject): Observable<any> {
+    const httpOptions = {
+      body: {
+        car
+      }
+    };
+    return this.http.put<any>(this.backendUrl + '/car', httpOptions);
+  }
   
   filterByMultipleSelection(filterCriteria: any): Observable<any[]> {
     const httpOptions = {

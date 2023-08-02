@@ -78,15 +78,18 @@ export class MainListComponent implements OnInit {
   }
 
   viewCarDetails(car: any) {
-
-
     var carDetails = <CarObject>{};
 
     this.httpService.getCarDataById(car.id).subscribe(
       (car) => {
         carDetails = car;
         console.log(carDetails);
-        this.addEditModalService.openEditDialog(carDetails);   
+        this.addEditModalService.openEditDialog(carDetails);
+        this.addEditModalService.dialogRef?.afterClosed().subscribe((result) => {
+          if (result) {
+            this.getCarList();
+          }
+        });
       },
       (error: HttpErrorResponse) => {
         console.log(error.status);
@@ -109,6 +112,7 @@ export class MainListComponent implements OnInit {
             console.log(error.status);
           }
         );
+        //result = false;
       }
     });
   }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AddEditModalServiceService } from './add-edit-modal-service.service';
+import { AddEditModalService } from './add-edit-modal-service.service';
 
 describe('AddEditModalServiceService', () => {
-  let service: AddEditModalServiceService;
+  let service: AddEditModalService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AddEditModalServiceService);
+    service = TestBed.inject(AddEditModalService);
   });
 
   it('should be created', () => {

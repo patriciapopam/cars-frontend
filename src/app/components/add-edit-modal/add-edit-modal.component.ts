@@ -12,11 +12,19 @@ export class AddEditModalComponent {
   carProperties: { name: string; value: any }[] = [];
   submitFormText: string;
 
+  firstDisable: boolean;
+
   constructor(
     public dialogRef: MatDialogRef<AddEditModalComponent>,
     private HttpClient: HttpClientService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
+    if (data.mode === 'edit') { 
+      this.firstDisable = true;
+    } else {
+      this.firstDisable = false;
+    }
+
     this.carProperties = this.getCarProperties();
     this.submitFormText = data.mode === 'add' ? 'Add car' : 'Edit car';
   }
@@ -41,23 +49,23 @@ export class AddEditModalComponent {
       this.HttpClient.deleteCar(this.data.id).subscribe(
         (response) => {
           console.log('Delete Request Response:', response);
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         },
         (error) => {
           console.error('Error making DELETE request:', error);
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         }
       );
     }
     else if (this.data.mode === 'edit') {
-      this.HttpClient.deleteCar(this.data.id).subscribe(
+      this.HttpClient.editCar(this.data.car).subscribe(
         (response) => {
           console.log('Put Request Response:', response);
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         },
         (error) => {
           console.error('Error making PUT request:', error);
-          this.dialogRef.close();
+          this.dialogRef.close(true);
         }
       );
     }
@@ -66,7 +74,7 @@ export class AddEditModalComponent {
     }
   }
   onCancelClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   consoleCar():void{
