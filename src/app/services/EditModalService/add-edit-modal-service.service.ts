@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditModalComponent } from 'src/app/components/add-edit-modal/add-edit-modal.component';
-import { DialogData } from '../../models/DialogData';
+import { DialogData } from '../../../models/DialogData';
 import { CarObject } from 'src/models/CarObject';
 
 @Injectable({

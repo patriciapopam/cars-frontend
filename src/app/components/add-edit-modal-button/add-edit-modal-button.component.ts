@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AddEditModalService } from '../../services/add-edit-modal-service.service';
+import { AddEditModalService } from '../../services/EditModalService/add-edit-modal-service.service';
 
 @Component({
   selector: 'app-add-edit-modal-button',
