@@ -32,9 +32,11 @@ export class HttpClientService {
     return this.http.post<CarObject>(this.backendUrl + '/getCarDetail/', httpOptions);
   }
 
-  deleteData(data:any): Observable<any> {
+  deleteCar(carid: string): Observable<any> {
     const httpOptions = {
-      body: data
+      body: {
+        'id': carid
+      }
     };
     return this.http.delete<any>(this.backendUrl + '/car', httpOptions);
   }

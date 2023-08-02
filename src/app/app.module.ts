@@ -37,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {FilterListComponent} from './components/filter-list/filter-list.component';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AddEditModalComponent,
     MainListComponent,
     FilterListComponent,
+    ConfirmationModalComponent,
     
   ],
   imports: [

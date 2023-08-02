@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
 import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
 import { CarObject } from 'src/models/CarObject';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-main-list',
@@ -24,7 +26,8 @@ export class MainListComponent implements OnInit {
 
   constructor(private httpService: HttpClientService,
               private filterCarsService: FilterCarsService,
-              private addEditModalService: AddEditModalService) { }
+              private addEditModalService: AddEditModalService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getCarList();
@@ -75,10 +78,6 @@ export class MainListComponent implements OnInit {
   }
 
   viewCarDetails(car: any) {
-    // TODO: Request by id to server for car details
-
-    console.log("clicked view car detail");
-    //alert(car.id);
 
 
     var carDetails = <CarObject>{};
@@ -95,6 +94,23 @@ export class MainListComponent implements OnInit {
     );
 
   }
-
+  
+  deleteCar(id: string) {
+    const dialogRef = this.dialog.open(ConfirmationModalComponent);
+    
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.httpService.deleteCar(id).subscribe(
+          (response) => {
+            console.log(response);
+            this.getCarList();
+          },
+          (error: HttpErrorResponse) => {
+            console.log(error.status);
+          }
+        );
+      }
+    });
+  }
 
 }

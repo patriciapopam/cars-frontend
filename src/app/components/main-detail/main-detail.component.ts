@@ -50,7 +50,7 @@ export class MainDetailComponent implements OnInit {
     this.test = this.selection.selected;
     
     this.test.forEach( (element: any) => {
-      this.httpService.deleteData(element).subscribe(
+      this.httpService.deleteCar(element).subscribe(
         (data) => {
           this.fetchData();
         }

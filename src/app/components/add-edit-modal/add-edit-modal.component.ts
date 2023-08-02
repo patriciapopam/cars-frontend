@@ -38,7 +38,7 @@ export class AddEditModalComponent {
       console.log('send request');
       if(this.data.mode === 'add')
       {
-      this.HttpClient.deleteData(this.data.car).subscribe(
+      this.HttpClient.deleteCar(this.data.id).subscribe(
         (response) => {
           console.log('Delete Request Response:', response);
           this.dialogRef.close();
@@ -50,7 +50,7 @@ export class AddEditModalComponent {
       );
     }
     else if (this.data.mode === 'edit') {
-      this.HttpClient.deleteData(this.data.car).subscribe(
+      this.HttpClient.deleteCar(this.data.id).subscribe(
         (response) => {
           console.log('Put Request Response:', response);
           this.dialogRef.close();
