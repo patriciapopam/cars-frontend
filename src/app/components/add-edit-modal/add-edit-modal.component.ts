@@ -50,13 +50,13 @@ export class AddEditModalComponent implements OnInit {
       console.log('send request');
       if(this.data.mode === 'add')
       {
-      this.HttpClient.deleteCar(this.data.id).subscribe(
+      this.HttpClient.addCar(this.data.car).subscribe(
         (response) => {
-          console.log('Delete Request Response:', response);
+          console.log('Create Request Response:', response);
           this.dialogRef.close(true);
         },
         (error) => {
-          console.error('Error making DELETE request:', error);
+          console.error('Error making POST request:', error);
           this.dialogRef.close(true);
         }
       );
