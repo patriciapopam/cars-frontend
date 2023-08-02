@@ -58,7 +58,7 @@ export class AddEditModalComponent {
       );
     }
     else if (this.data.mode === 'edit') {
-      this.HttpClient.editCar(this.data.car).subscribe(
+      this.HttpClient.editCar(this.data.id, this.data.car).subscribe(
         (response) => {
           console.log('Put Request Response:', response);
           this.dialogRef.close(true);

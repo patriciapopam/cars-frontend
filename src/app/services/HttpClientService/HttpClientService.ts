@@ -41,11 +41,21 @@ export class HttpClientService {
     return this.http.delete<any>(this.backendUrl + '/car', httpOptions);
   }
 
-  editCar(car: CarObject): Observable<any> {
+  editCar(id: string, car: CarObject): Observable<any> {
     const httpOptions = {
-      body: {
-        car
-      }
+      "id": id,
+      "brand": car.brand,
+      "color": car.color,
+      "model": car.model,
+      "category": car.category,
+      "engine": car.engine,
+      "year": car.year,
+      "fuelType": car.fuelType,
+      "cylinderCapacity": car.cylinderCapacity,
+      "torque": car.torque,
+      "horsePower": car.horsePower,
+      "country": car.country,
+      "transmission": car.transmission
     };
     return this.http.put<any>(this.backendUrl + '/car', httpOptions);
   }
