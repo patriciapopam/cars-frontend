@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
+import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
+import { CarObject } from 'src/models/CarObject';
 
 @Component({
   selector: 'app-main-list',
@@ -21,7 +23,8 @@ export class MainListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private httpService: HttpClientService,
-              private filterCarsService: FilterCarsService) { }
+              private filterCarsService: FilterCarsService,
+              private addEditModalService: AddEditModalService) { }
 
   ngOnInit(): void {
     this.getCarList();
@@ -71,9 +74,27 @@ export class MainListComponent implements OnInit {
   
   }
 
-  viewCarDetails(id: any) {
-    // TODO: Add modal dialogue to show + edit car details
+  viewCarDetails(car: any) {
+    // TODO: Request by id to server for car details
+
     console.log("clicked view car detail");
-    alert(id);
+    //alert(car.id);
+
+
+    var carDetails = <CarObject>{};
+
+    this.httpService.getCarDataById(car.id).subscribe(
+      (car) => {
+        carDetails = car;
+        console.log(carDetails);
+        this.addEditModalService.openEditDialog(carDetails);   
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.status);
+      }
+    );
+
   }
+
+
 }

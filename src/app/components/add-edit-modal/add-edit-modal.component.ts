@@ -22,7 +22,7 @@ export class AddEditModalComponent {
   }
 
   getCarProperties(): { name: string; value: any }[] {
-    return Object.entries(this.data.car).map(([name, value]) => ({ name, value }));
+    const { id, ...restOfCar } = this.data.car;   return Object.entries(restOfCar).map(([name, value]) => ({ name, value }));
   }
 
   getInputType(value: any): string {

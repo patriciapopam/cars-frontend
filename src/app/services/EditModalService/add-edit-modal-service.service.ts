@@ -13,6 +13,7 @@ export class AddEditModalService {
 
   openAddDialog(): void {
     const dialogData: DialogData = {
+      id: '',
       title: 'Add Car',
       mode: 'add',
       car: {
@@ -38,9 +39,10 @@ export class AddEditModalService {
 
   openEditDialog(carData: CarObject): void {
     const dialogData: DialogData = {
+      id: carData['id'],
       title: 'Edit Car',
       mode: 'edit',
-      car: { ...carData }, // Copy the carData object to avoid modifying the original data
+      car: { ...carData}, // Copy the carData object to avoid modifying the original data
     };
     this.dialog.open(AddEditModalComponent, {
       data: dialogData,

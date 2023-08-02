@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
+import { CarObject } from 'src/models/CarObject';
 
 
 @Injectable({
@@ -22,6 +23,13 @@ export class HttpClientService {
 
   getCarData(): Observable<any[]> {
     return this.http.get<any[]>(this.backendUrl + '/getAllCarSummary');
+  }
+
+  getCarDataById(id: string): Observable<CarObject> {
+    const httpOptions = {
+        'id': id
+    };
+    return this.http.post<CarObject>(this.backendUrl + '/getCarDetail/', httpOptions);
   }
 
   deleteData(data:any): Observable<any> {
