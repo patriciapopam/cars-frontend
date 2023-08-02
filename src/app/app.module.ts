@@ -39,6 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -84,8 +86,9 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 
     MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatSelectModule,
-    AddEditModalButtonComponent
-    
+    AddEditModalButtonComponent,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [ 
     SpinnerService,
