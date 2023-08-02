@@ -80,4 +80,8 @@ export class AddEditModalComponent {
   consoleCar():void{
     console.log(this.data.car);
   }
+
+  changeFirstDisable():void{
+    this.firstDisable = false;
+  }
 }

@@ -18,9 +18,19 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button (click)="onCancelClick()" cdkFocusInitial>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" (click)="onSubmitClick()">{{ submitFormText }}</button>
-    <button mat-button (click)="consoleCar()">console</button>
-    <!-- Use [mat-dialog-close]="true" instead of binding to onSubmitClick() -->
+    <button
+      mat-button
+      *ngIf="!firstDisable; else alternateButton"
+      (click)="onSubmitClick()"
+      cdkFocusInitial
+    >
+      {{ submitFormText }}
+    </button>
+  
+    <ng-template #alternateButton>
+      <button mat-button (click)="changeFirstDisable()">Edit this car?</button>
+    </ng-template>
+  
+    <button mat-button (click)="onCancelClick()">Cancel</button>
   </div>
 </div>
