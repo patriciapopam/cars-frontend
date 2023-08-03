@@ -1,0 +1,89 @@
+.side-nav {
+  position: fixed;
+  top: 0;
+  left: -25%; 
+  background-color: #f0f0f0;
+  width: 25%;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999; 
+}
+
+/* Animation styles */
+@keyframes slideIn {
+  from {
+    left: -25%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    left: 0;
+  }
+  to {
+    left: -25%;
+  }
+}
+
+/* Animation trigger */
+.side-nav.open {
+  animation: slideIn 0.3s;
+}
+
+.side-nav.close {
+  animation: slideOut 0.3s;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 999; /* Ensure the backdrop is above other content */
+}
+
+.side-nav-container{
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5%;
+}
+
+.no-link-style {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  padding-bottom: 2%;
+  width: 100%;
+}
+
+.no-link-style:hover {
+  cursor: pointer;
+}
+
+.in-line-block{
+  display: inline-block;
+  width: 100%;
+  padding: 2%;
+  text-align: center;
+}
+
+.close-nav-button{
+  width: 100%;
+  height: 5%;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.darker-background-hover:hover{
+  cursor: pointer;
+  backdrop-filter: invert(5%);
+}
