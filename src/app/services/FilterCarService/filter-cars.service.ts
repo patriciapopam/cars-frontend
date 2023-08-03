@@ -1,3 +1,5 @@
+//TODO: DEPRECATED. TO DELETE (eventually, after reformatting main-list component).
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';

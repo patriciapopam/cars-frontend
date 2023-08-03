@@ -64,7 +64,8 @@ export class MainListComponent implements OnInit {
   }
 
   addCar() {
-    
+    this.addEditModalService.openAddDialog();
+    this.getCarList();
   }
 
   applyFilter(event: Event) {
@@ -76,6 +77,7 @@ export class MainListComponent implements OnInit {
     }
   }
 
+  //to modify in the future
   getCarList() {
 
     this.httpService.getCarData().subscribe(
