@@ -35,5 +35,12 @@ export class FilterCarsService {
     this.modelList.next(models);
     this.yearList.next(years);
   }
+
+  updateFilterListWithItem(brand: any, category: any, model: any, year: any) {
+    this.brandList.next(this.brandList.value.add(brand));
+    this.categoryList.next(this.categoryList.value.add(category));
+    this.modelList.next(this.modelList.value.add(model));
+    this.yearList.next(this.yearList.value.add(year));
+  }
   
 }

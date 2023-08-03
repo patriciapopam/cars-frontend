@@ -65,7 +65,6 @@ export class MainListComponent implements OnInit {
 
   addCar() {
     this.addEditModalService.openAddDialog();
-    this.getCarList();
   }
 
   applyFilter(event: Event) {
@@ -77,35 +76,36 @@ export class MainListComponent implements OnInit {
     }
   }
 
+
+
   //to modify in the future
   getCarList() {
+      this.httpService.getCarData().subscribe(
+        (carList) => {
+          this.carList = new MatTableDataSource(carList);
+          
+          this.carList.paginator = this.paginator;
+          this.carList.sort = this.sort;
+          
+          let brandList = new Set<string>();
+          let categoryList = new Set<string>();
+          let modelList = new Set<string>();
+          let yearList =  new Set<string>();
 
-    this.httpService.getCarData().subscribe(
-      (carList) => {
-        this.carList = new MatTableDataSource(carList);
-        
-        this.carList.paginator = this.paginator;
-        this.carList.sort = this.sort;
-        
-        let brandList = new Set<string>();
-        let categoryList = new Set<string>();
-        let modelList = new Set<string>();
-        let yearList =  new Set<string>();
-
-        for (let car of carList) {
-          brandList.add(car.brand);
-          categoryList.add(car.category);
-          modelList.add(car.model);
-          yearList.add(car.year);
+          for (let car of carList) {
+            brandList.add(car.brand);
+            categoryList.add(car.category);
+            modelList.add(car.model);
+            yearList.add(car.year);
+          }
+          this.filterCarsService.updateFilterLists(brandList, categoryList, modelList, yearList); 
+          
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.status);
         }
-        this.filterCarsService.updateFilterLists(brandList, categoryList, modelList, yearList); 
-        
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error.status);
-      }
-    );
-  
+      );
+    
   }
 
   viewCarDetails(car: any) {

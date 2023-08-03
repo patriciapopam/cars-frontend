@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
 import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-edit-modal',
@@ -20,7 +22,9 @@ export class AddEditModalComponent implements OnInit {
     public dialogRef: MatDialogRef<AddEditModalComponent>,
     private HttpClient: HttpClientService,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+
+    private filterCarsService: FilterCarsService
   ) { }
   ngOnInit(): void {
     this.firstDisable = this.data.mode === 'edit' ? true : false;
@@ -54,6 +58,19 @@ export class AddEditModalComponent implements OnInit {
         (response) => {
           console.log('Create Request Response:', response);
           this.dialogRef.close(true);
+          
+          //Get list of summarized cars again and refresh the filter options
+          this.HttpClient.getCarData().subscribe(
+            (carList) => {
+              this.filterCarsService.updateData(carList);
+              this.filterCarsService.updateFilterListWithItem(this.data.car.brand, this.data.car.category, this.data.car.model, this.data.car.year)
+              console.log(this.filterCarsService.updatedBrandList$);
+            },
+            (error: HttpErrorResponse) => {
+              console.log(error.status);
+            }
+          );
+          
         },
         (error) => {
           console.error('Error making POST request:', error);
@@ -88,4 +105,6 @@ export class AddEditModalComponent implements OnInit {
   changeFirstDisable():void{
     this.firstDisable = false;
   }
+
+
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { CarObject } from 'src/models/CarObject';
 
 
@@ -12,7 +12,7 @@ import { CarObject } from 'src/models/CarObject';
 /**
  * Service for making HTTP requests using Angular's HttpClient module.
  */
-export class HttpClientService {
+export class HttpClientService {  
   private backendUrl = 'http://localhost:8080/data';
 
   constructor(private http: HttpClient) { }
