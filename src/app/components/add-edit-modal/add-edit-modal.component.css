@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
   }
+
   .key-value-pair{
     display: flex;
     justify-content: space-between;
@@ -34,11 +35,19 @@
   
   .add-edit-modal{
     max-width: 35vw;
+
   }
+
+  .dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  
   /* Media query for larger screens */
   @media screen and (min-width: 2000px) {
     .form-container mat-form-field {
       flex-basis: calc(33.33% - 2%); /* Adjust the width of each input to show three columns */
     }
   }
-  

@@ -34,7 +34,7 @@ export class AddEditModalService {
       },
     };
     this.dialogRef = this.dialog.open(AddEditModalComponent, {       
-      data: dialogData   
+      data: dialogData, autoFocus: false  
     });
 
     console.log('openAddDialog')
@@ -48,7 +48,7 @@ export class AddEditModalService {
       car: { ...carData}, // Copy the carData object to avoid modifying the original data
     };
     this.dialogRef = this.dialog.open(AddEditModalComponent, {       
-      data: dialogData   
+      data: dialogData, autoFocus: false   
     });
   }
 }

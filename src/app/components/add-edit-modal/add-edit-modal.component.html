@@ -1,51 +1,47 @@
 <div class="add-edit-modal">
-  <h2 mat-dialog-title class="edit-modal-title">{{ data.title }}</h2>
+
+  <div mat-dialog-title class="dialog-title">
+    <h2 mat-dialog-title class="edit-modal-title">{{ data.title }}</h2>
+
+    <button mat-icon-button matTooltip="Close" aria-label="close dialog" mat-dialog-close style="margin-bottom: 20px;">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
 
   <div mat-dialog-content [ngClass]="{'form-container': !firstDisable,'list-container':firstDisable}">
-    
-      <!-- If firstDisable is true, display key-value list -->
-      <ng-container *ngIf="firstDisable; else normalForm">
-        <div *ngFor="let prop of carProperties" class="key-value-pair">
-          <span class="key">{{ prop.name }}</span>
-          <span>:</span>
-          <span class="value">{{ data.car[prop.name] }}</span>
-        </div>
+
+    <!-- If firstDisable is true, display key-value list -->
+    <ng-container *ngIf="firstDisable; else normalForm">
+      <div *ngFor="let prop of carProperties" class="key-value-pair">
+        <span class="key">{{ prop.name }}</span>
+        <span>:</span>
+        <span class="value">{{ data.car[prop.name] }}</span>
+      </div>
+    </ng-container>
+
+    <!-- If firstDisable is false, display the normal form -->
+    <ng-template #normalForm>
+      <ng-container *ngFor="let prop of carProperties">
+        <mat-form-field>
+          <mat-label class="key">{{ prop.name }}</mat-label>
+          <input disabled="{{ firstDisable }}" matInput [attr.type]="getInputType(prop.value)"
+            [(ngModel)]="data.car[prop.name]" [ngModelOptions]="{standalone: true}" name="{{ prop.name }}"
+            placeholder="{{ prop.name }}" required="true" />
+        </mat-form-field>
       </ng-container>
-    
-      <!-- If firstDisable is false, display the normal form -->
-      <ng-template #normalForm>
-        <ng-container *ngFor="let prop of carProperties">
-          <mat-form-field>
-            <mat-label class="key">{{ prop.name }}</mat-label>
-            <input disabled="{{ firstDisable }}"
-              matInput
-              [attr.type]="getInputType(prop.value)"
-              [(ngModel)]="data.car[prop.name]"
-              [ngModelOptions]="{standalone: true}"
-              name="{{ prop.name }}"
-              placeholder="{{ prop.name }}"
-              required="true"
-            />
-          </mat-form-field>
-        </ng-container>
-      </ng-template>
+    </ng-template>
   </div>
 
   <div mat-dialog-actions>
-    <button
-    mat-button
-    *ngIf="!firstDisable; else alternateButton"
-    (click)="onSubmitClick()"
-    cdkFocusInitial
-    matTooltip="{{ submitFormTooltip }}"
-    >
+    <button mat-button *ngIf="!firstDisable; else alternateButton" (click)="onSubmitClick()" cdkFocusInitial
+      matTooltip="{{ submitFormTooltip }}">
       {{ submitFormText }}
     </button>
-  
+
     <ng-template #alternateButton>
       <button mat-button matTooltip="Enable editing this car" (click)="changeFirstDisable()">Edit this car?</button>
     </ng-template>
-  
+
     <button mat-button matTooltip="Cancel action" (click)="onCancelClick()">Cancel</button>
   </div>
 </div>
