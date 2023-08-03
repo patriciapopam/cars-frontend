@@ -60,15 +60,15 @@
   text-decoration: none;
   color: inherit;
   outline: none;
-  padding-bottom: 2%;
 }
 
 
-.in-line-block{
+.nav-link-style{
   display: inline-block;
   width: 100%;
   padding: 2%;
   text-align: center;
+  font-size: larger;
 }
 
 .close-nav-button{

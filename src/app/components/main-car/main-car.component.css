@@ -1,0 +1,55 @@
+/* home-main.component.css */
+main {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .hero {
+    background-color: hsla(0, 0%, 0%, 0.425);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-content {
+    color: #000000;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    background-color: #007bff; 
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3; 
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .feature {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .feature i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #007bff; /* Primary color accent */
+  }
+  
