@@ -71,17 +71,14 @@ body {
 
 }
 
-.customFilter {
-    padding-left: 2%;
-    padding-right: 2%;
-}
-
 .tableFilterHeader {
     padding-left: 1%;
     background-color: #3f51b5;
     color: white;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2%;
+    min-height: 24px;
 }
 
 .addCar {
@@ -90,4 +87,16 @@ body {
     color: white;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2%;
+    min-height: 24px;
+}
+
+.expandable-buttons {
+    display: inline-block; 
+    cursor: pointer; 
+}
+
+.custom-filter {
+    padding-left: 2%;
+    padding-right: 2%;
 }

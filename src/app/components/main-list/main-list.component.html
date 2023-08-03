@@ -2,22 +2,22 @@
     Car List
 </h3>
 
-<div class="addCar mat-elevation-z8 customFilter">
+<div class="addCar mat-elevation-z8">
     <div>Add car: </div>
-    <div style="padding-right:1%; cursor: pointer" (click)="addCar()"> + </div>
+    <div class="material-icons expandable-buttons" (click)="addCar()"> add </div>
 </div>
 
-<div class="tableFilterHeader mat-elevation-z8 customFilter">
+<div class="tableFilterHeader mat-elevation-z8">
     <div>Filter cars: </div>
     <div style="display: flex;">
-        <div style="display: inline-block; cursor: pointer" (click)="maximizeFilterMenu()"> + </div>
-        <div style="display: inline-block; cursor: pointer; padding-left: 1%; padding-right: 10%;" (click)="minimizeFilterMenu()"> - </div>
+        <div class="material-icons expandable-buttons" (click)="maximizeFilterMenu()"> keyboard_arrow_down </div>
+        <div class="material-icons expandable-buttons" (click)="minimizeFilterMenu()"> keyboard_arrow_up </div>
     </div>
 </div>
 
 <div *ngIf="isFilterShown" class="carFilter">
     <div class="mat-elevation-z8">
-        <div class="customFilter">
+        <div class="custom-filter">
             <div class="matformsfilterlist">
                 <mat-form-field>
                     <mat-label>Brands</mat-label>
