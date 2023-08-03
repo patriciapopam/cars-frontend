@@ -1,6 +1,6 @@
 <mat-toolbar class="mat-elevation-z8">
-    <a routerLink="car-detail">
-        <button mat-icon-button color="primary" aria-label="Example icon-button with menu icon">
+    <a>
+        <button mat-icon-button color="primary" (click)="toggleSideNav()" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
         </button>
     </a>
@@ -22,3 +22,4 @@
       <mat-icon>account_circle</mat-icon>
     </button>
 </mat-toolbar>
+<app-side-navbar></app-side-navbar>

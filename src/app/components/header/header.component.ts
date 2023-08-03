@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SideNavService } from 'src/app/services/SideNavService/side-nav.service';
 
 
 
@@ -13,11 +14,12 @@ export class HeaderComponent implements OnInit {
 
   username: string = "Patricia Popa";
 
-  constructor() {}
+  constructor(private sideNavService:SideNavService) {}
 
   ngOnInit(): void {
-
   }
-  
 
+  toggleSideNav(): void {
+    this.sideNavService.toggleSideNav();
+  }
 }

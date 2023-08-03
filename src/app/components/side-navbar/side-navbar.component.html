@@ -1,0 +1,17 @@
+<div class="side-nav" [@openClose]="sideNavService.isOpen ? 'open' : 'close'">
+  <div class="close-nav-button darker-background-hover" (click)="closeSideNav()" title="Close NavBar">
+    <mat-icon color="primary">close</mat-icon>
+  </div>
+  <div class="side-nav-container">
+    <a class="no-link-style darker-background-hover nav-link-style" routerLink="/" (click)="closeSideNav()" title="Homepage">
+      Home
+    </a>
+    <a class="no-link-style darker-background-hover nav-link-style" routerLink="/add-car" (click)="closeSideNav()" title="Add a car">
+      Add Car
+    </a>
+    <a class="no-link-style darker-background-hover nav-link-style" routerLink="/car-list" (click)="closeSideNav()" title="See all the cars">
+      Car List
+    </a>
+  </div>
+</div>
+<div class="backdrop" *ngIf="sideNavService.isOpen" (click)="closeSideNav()"></div>

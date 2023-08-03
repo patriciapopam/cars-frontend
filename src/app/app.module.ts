@@ -39,6 +39,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import {  MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MainListComponent,
     FilterListComponent,
     ConfirmationModalComponent,
+    SideNavbarComponent,
+    AddCarPageComponent,
     
   ],
   imports: [
@@ -83,7 +89,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
     MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatSelectModule,
-    AddEditModalButtonComponent
+    AddEditModalButtonComponent,
+    MatSidenavModule,
+    MatListModule,
     
   ],
   providers: [ 

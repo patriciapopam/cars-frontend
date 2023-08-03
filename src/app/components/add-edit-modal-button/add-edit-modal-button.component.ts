@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,7 +22,7 @@ import { AddEditModalService } from '../../services/EditModalService/add-edit-mo
   ],
 })
 export class AddEditModalButtonComponent implements OnInit {
-
+  @Input() btnText: string = 'Add';
   constructor(private modalService:AddEditModalService) { }
 
   ngOnInit(): void {

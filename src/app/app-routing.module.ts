@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { CarAppComponent } from './components/car-app/car-app.component';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 
 const routes: Routes = [
   { path: 'car-list', component: CarListComponent},
   { path: 'car-detail', component: CarDetailComponent },
+  { path: 'add-car', component: AddCarPageComponent},
   { path: '', component: CarAppComponent },
 ];
 
