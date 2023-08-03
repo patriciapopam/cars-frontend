@@ -41,6 +41,7 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import {  MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MatListModule } from '@angular/material/list';
     FilterListComponent,
     ConfirmationModalComponent,
     SideNavbarComponent,
+    AddCarPageComponent,
     
   ],
   imports: [

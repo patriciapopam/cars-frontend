@@ -31,10 +31,10 @@ export class SnackbarHttpService {
 
         },
         (error: HttpErrorResponse) => {
-          if (error.status >= 400) {
+          
             // Show an error snackbar for status codes greater than or equal to 400
             this.snackbarService.showErrorSnackbar(`Request failed with http code ${error.status}`, config);
-          }
+          
         }
       )
     );
