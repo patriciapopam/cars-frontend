@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { SideNavService } from 'src/app/services/side-nav.service';
+import { SideNavService } from 'src/app/services/SideNavService/side-nav.service';
 
 @Component({
   selector: 'app-side-navbar',
