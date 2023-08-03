@@ -1,32 +1,36 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
 import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-modal',
   templateUrl: './add-edit-modal.component.html',
   styleUrls: ['./add-edit-modal.component.css']
 })
-export class AddEditModalComponent {
+export class AddEditModalComponent implements OnInit {
   carProperties: { name: string; value: any }[] = [];
   submitFormText: string;
-
+  submitFormTooltip:string;
   firstDisable: boolean;
+  formGroup: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<AddEditModalComponent>,
     private HttpClient: HttpClientService,
+    private formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-    if (data.mode === 'edit') { 
-      this.firstDisable = true;
-    } else {
-      this.firstDisable = false;
-    }
-
+  ) { }
+  ngOnInit(): void {
+    this.firstDisable = this.data.mode === 'edit' ? true : false;
     this.carProperties = this.getCarProperties();
-    this.submitFormText = data.mode === 'add' ? 'Add car' : 'Edit car';
+    this.submitFormText = this.data.mode === 'add' ? 'Add car' : 'Edit car';
+    this.submitFormTooltip = this.data.mode === 'add' ? 'Add a new car' : 'Edit this car';
+    this.formGroup = this.formBuilder.group({});
+    this.carProperties.forEach((prop) => {
+      this.formGroup.addControl(prop.name, this.formBuilder.control('', [Validators.maxLength(50),Validators.minLength(2)]));
+    });
   }
 
   getCarProperties(): { name: string; value: any }[] {
@@ -46,19 +50,19 @@ export class AddEditModalComponent {
       console.log('send request');
       if(this.data.mode === 'add')
       {
-      this.HttpClient.deleteCar(this.data.id).subscribe(
+      this.HttpClient.addCar(this.data.car).subscribe(
         (response) => {
-          console.log('Delete Request Response:', response);
+          console.log('Create Request Response:', response);
           this.dialogRef.close(true);
         },
         (error) => {
-          console.error('Error making DELETE request:', error);
+          console.error('Error making POST request:', error);
           this.dialogRef.close(true);
         }
       );
     }
     else if (this.data.mode === 'edit') {
-      this.HttpClient.editCar(this.data.car).subscribe(
+      this.HttpClient.editCar(this.data.id, this.data.car).subscribe(
         (response) => {
           console.log('Put Request Response:', response);
           this.dialogRef.close(true);

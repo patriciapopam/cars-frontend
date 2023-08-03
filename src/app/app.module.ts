@@ -38,6 +38,7 @@ import {FilterListComponent} from './components/filter-list/filter-list.componen
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import {  MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -85,6 +86,7 @@ import { AddCarPageComponent } from './components/add-car-page/add-car-page.comp
     SpinnerComponent,
     CustomSnackbarComponent,
     ReactiveFormsModule,
+    MatTooltipModule,
     MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatSelectModule,
     AddEditModalButtonComponent,
