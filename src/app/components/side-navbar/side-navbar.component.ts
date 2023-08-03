@@ -24,6 +24,13 @@ import { SideNavService } from 'src/app/services/SideNavService/side-nav.service
     ]),
   ],
 })
+
+/**
+ * Component that represents the side navigation bar of the application.
+ * This component is responsible for displaying the navigation links and handling the open/close animation.
+ * The open/close animation is triggered by the SideNavService and can be triggered by clicking the hamburger menu, the backdrop, or pressing the escape key.
+ */
+
 export class SideNavbarComponent {
   constructor(public sideNavService: SideNavService) {}
 
