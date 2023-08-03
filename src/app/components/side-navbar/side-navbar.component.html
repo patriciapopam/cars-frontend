@@ -1,6 +1,6 @@
 <div class="side-nav" [@openClose]="sideNavService.isOpen ? 'open' : 'close'">
   <div class="close-nav-button darker-background-hover" (click)="closeSideNav()" >
-    <mat-icon>close</mat-icon>
+    <mat-icon color="primary">close</mat-icon>
   </div>
   <div class="side-nav-container">
     <a class="no-link-style darker-background-hover in-line-block" routerLink="/" (click)="closeSideNav()">
