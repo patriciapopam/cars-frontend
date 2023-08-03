@@ -59,7 +59,7 @@ export class AddEditModalComponent implements OnInit {
           console.log('Create Request Response:', response);
           this.dialogRef.close(true);
           
-          //Get list of summarized cars again and refresh the filter options
+          // Get list of summarized cars again and refresh the filter options
           this.HttpClient.getCarData().subscribe(
             (carList) => {
               this.filterCarsService.updateData(carList);

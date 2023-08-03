@@ -7,16 +7,17 @@
     <div class="material-icons expandable-buttons" (click)="addCar()"> add </div>
 </div>
 
-<div class="tableFilterHeader mat-elevation-z8">
-    <div>Filter cars: </div>
-    <div style="display: flex;">
-        <div class="material-icons expandable-buttons" (click)="maximizeFilterMenu()"> keyboard_arrow_down </div>
-        <div class="material-icons expandable-buttons" (click)="minimizeFilterMenu()"> keyboard_arrow_up </div>
+<div [ngClass]="{'mat-elevation-z8': isFilterShown}">
+    <div class="tableFilterHeader" [ngClass]="{'mat-elevation-z8': !isFilterShown}">
+        <div>Filter cars: </div>
+        <div style="display: flex;">
+            <div class="material-icons expandable-buttons" (click)="maximizeFilterMenu()"> keyboard_arrow_down </div>
+            <div class="material-icons expandable-buttons" (click)="minimizeFilterMenu()"> keyboard_arrow_up </div>
+        </div>
     </div>
-</div>
 
-<div *ngIf="isFilterShown" class="carFilter">
-    <div class="mat-elevation-z8">
+    <div *ngIf="isFilterShown" class="carFilter">
+
         <div class="custom-filter">
             <div class="matformsfilterlist">
                 <mat-form-field>
@@ -64,6 +65,7 @@
             </mat-form-field>
         </div>
     </div>
+
 </div>
 
 <div class="mat-elevation-z8 table-filter">
@@ -96,8 +98,8 @@
         <ng-container matColumnDef="action_delete">
             <th mat-header-cell *matHeaderCellDef mat-sort-header colspan="2"> Action </th>
             <td mat-cell *matCellDef="let row">
-                <button title="Delete car" mat-icon-button color="primary" aria-label="Example icon button with a delete icon"
-                    (click)="deleteCar(row.id)">
+                <button title="Delete car" mat-icon-button color="primary"
+                    aria-label="Example icon button with a delete icon" (click)="deleteCar(row.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
@@ -106,8 +108,8 @@
         <ng-container matColumnDef="action_edit">
             <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> </th>
             <td mat-cell *matCellDef="let row">
-                <button mat-icon-button title="Edit car details" color="primary" aria-label="Example icon button with a menu icon"
-                    (click)="viewCarDetails(row)">
+                <button mat-icon-button title="Edit car details" color="primary"
+                    aria-label="Example icon button with a menu icon" (click)="viewCarDetails(row)">
                     <mat-icon>menu</mat-icon>
                 </button>
             </td>

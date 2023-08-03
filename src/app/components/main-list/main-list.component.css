@@ -1,5 +1,6 @@
 table {
     width: 100%;
+    margin-top: 2%;
 }
 
 .mat-mdc-form-field {
@@ -77,8 +78,9 @@ body {
     color: white;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2%;
-    min-height: 24px;
+    min-height: 26px;
+    vertical-align: middle;
+    align-items: center;
 }
 
 .addCar {
@@ -88,7 +90,8 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%;
-    min-height: 24px;
+    min-height: 26px;
+    align-items: center;
 }
 
 .expandable-buttons {
