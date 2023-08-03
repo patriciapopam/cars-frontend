@@ -78,8 +78,7 @@ body {
     color: white;
     display: flex;
     justify-content: space-between;
-    min-height: 26px;
-    vertical-align: middle;
+    min-height: 28px;
     align-items: center;
 }
 
@@ -90,13 +89,15 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%;
-    min-height: 26px;
+    min-height: 28px;
     align-items: center;
 }
 
 .expandable-buttons {
     display: inline-block; 
     cursor: pointer; 
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .custom-filter {
