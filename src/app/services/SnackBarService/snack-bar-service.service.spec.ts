@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SnackBarServiceService } from './snack-bar-service.service';
+import { SnackbarService } from './snack-bar-service.service';
 
 describe('SnackBarServiceService', () => {
-  let service: SnackBarServiceService;
+  let service: SnackbarService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SnackBarServiceService);
+    service = TestBed.inject(SnackbarService);
   });
 
   it('should be created', () => {

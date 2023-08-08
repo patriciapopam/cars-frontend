@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SelectionModel} from '@angular/cdk/collections';
-import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

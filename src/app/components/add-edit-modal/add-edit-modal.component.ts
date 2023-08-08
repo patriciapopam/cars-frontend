@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
-import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
 import { HttpErrorResponse } from '@angular/common/http';

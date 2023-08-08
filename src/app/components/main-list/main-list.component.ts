@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

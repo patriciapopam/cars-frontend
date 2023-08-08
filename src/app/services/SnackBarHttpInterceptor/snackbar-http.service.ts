@@ -25,9 +25,14 @@ export class SnackbarHttpService {
       tap(
         (event: HttpEvent<any>): void => {
           // // Show a success snackbar for status codes in the range 200-299
-          // if (event instanceof HttpResponse && event.status >= 200 && event.status < 300) {
-          //   this.snackbarService.showSuccessSnackbar(`Request finished with http code ${event.status}`, config);
-          // }
+          //if (event instanceof HttpResponse && event.status >= 200 && event.status < 300) {
+          //  this.snackbarService.showSuccessSnackbar(`Request finished with http code ${event.status}`, config);
+          //}
+          
+          // Show a success snackbar for status codes in the range 200-299 for /car URL
+          if (event instanceof HttpResponse && event.status >= 200 && event.status < 300 && event.url?.includes('/car')) {
+            this.snackbarService.showSuccessSnackbar(`${event.body.statusMessage}.`, config);
+          }
 
         },
         (error: HttpErrorResponse) => {

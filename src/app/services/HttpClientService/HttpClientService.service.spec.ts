@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpClientService } from './HttpClientService';
+import { HttpClientService } from './HttpClientService.service';
 
 describe('HttpExampleService', () => {
   let service: HttpClientService;

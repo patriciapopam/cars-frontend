@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FilterCarsService } from 'src/app/services/FilterCarService/filter-cars.service';
-import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService';
+import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService.service';
 
 
 @Component({
