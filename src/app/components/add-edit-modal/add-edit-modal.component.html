@@ -8,13 +8,13 @@
     </button>
   </div>
 
-  <div mat-dialog-content [ngClass]="{'form-container': !firstDisable,'list-container':firstDisable}">
+  <div mat-dialog-content style="max-width: 35vw; margin-left: auto; margin-right: auto;" [ngClass]="{'form-container': !firstDisable,'list-container':firstDisable}">
 
     <!-- If firstDisable is true, display key-value list -->
     <ng-container *ngIf="firstDisable; else normalForm">
       <div *ngFor="let prop of carProperties" class="key-value-pair">
-        <span class="key">{{ prop.name }}</span>
-        <span>:</span>
+        <span class="key">{{ formatPropertyName(prop.name) }}</span>
+        <span class="divider">:</span>
         <span class="value">{{ data.car[prop.name] }}</span>
       </div>
     </ng-container>

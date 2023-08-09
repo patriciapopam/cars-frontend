@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../../../models/DialogData';
 import { HttpClientService } from 'src/app/services/HttpClientService/HttpClientService.service';
@@ -9,7 +9,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-add-edit-modal',
   templateUrl: './add-edit-modal.component.html',
-  styleUrls: ['./add-edit-modal.component.css']
+  styleUrls: ['./add-edit-modal.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AddEditModalComponent implements OnInit {
   carProperties: { name: string; value: any }[] = [];
@@ -106,5 +107,7 @@ export class AddEditModalComponent implements OnInit {
     this.firstDisable = false;
   }
 
-
+  formatPropertyName(name: string): string {
+    return name.replace(/([A-Z])/g, ' $1').trim();
+  }
 }
