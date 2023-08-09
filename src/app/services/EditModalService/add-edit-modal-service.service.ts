@@ -1,5 +1,5 @@
 // dialog.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddEditModalComponent } from 'src/app/components/add-edit-modal/add-edit-modal.component';
 import { DialogData } from '../../../models/DialogData';
@@ -11,7 +11,9 @@ import { CarObject } from 'src/models/CarObject';
 export class AddEditModalService {
 
   dialogRef: MatDialogRef<AddEditModalComponent> | undefined;
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {
+  }
+
 
   openAddDialog(): void {
     const dialogData: DialogData = {
@@ -48,7 +50,7 @@ export class AddEditModalService {
       car: { ...carData}, // Copy the carData object to avoid modifying the original data
     };
     this.dialogRef = this.dialog.open(AddEditModalComponent, {       
-      data: dialogData, autoFocus: false   
+      data: dialogData, autoFocus: false, panelClass: "custom-container",
     });
   }
 }
