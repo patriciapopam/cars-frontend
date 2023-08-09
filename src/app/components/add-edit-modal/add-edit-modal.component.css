@@ -1,25 +1,37 @@
 /* add-edit-modal.component.css */
 .form-container {
     display: flex;
-
     flex-wrap: wrap;
     gap: 2%; /* Space between columns */
-
     padding: 2%;
   }
   
   .form-container mat-form-field {
     flex-basis: calc(50% - 1%); /* Adjust the width of each input to create space between columns */
     margin-bottom: 2%; /* Add space between rows */
-
-    
   }
 
+  .add-edit-modal{
+    /*max-width: 35vw;*/
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3f51b5;  
+
+  }
 
   .edit-modal-title{
     display: flex;
     justify-content: center;
     padding: 2%;
+    color: white;
+    margin: 0;
   }
 
   .key-value-pair{
@@ -62,20 +74,7 @@
     overflow: hidden;
   }
   
-  .add-edit-modal{
-    /*max-width: 35vw;*/
-    margin-left: auto;
-    margin-right: auto;
 
-  }
-
-  .dialog-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3f51b5;
-
-  }
 
   .custom-container .mat-dialog-container {
     padding: 0;

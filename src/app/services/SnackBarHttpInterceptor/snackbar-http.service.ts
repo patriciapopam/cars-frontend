@@ -18,7 +18,7 @@ export class SnackbarHttpService {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const config = {
-      duration: 3000,
+      duration: 5000,
     };
 
     return next.handle(req).pipe(
@@ -29,9 +29,10 @@ export class SnackbarHttpService {
           //  this.snackbarService.showSuccessSnackbar(`Request finished with http code ${event.status}`, config);
           //}
           
-          // Show a success snackbar for status codes in the range 200-299 for /car URL
-          if (event instanceof HttpResponse && event.status >= 200 && event.status < 300 && event.url?.includes('/car')) {
-            this.snackbarService.showSuccessSnackbar(`${event.body.statusMessage}.`, config);
+          // Show a success snackbar for status codes in the range 200-299
+          if (event instanceof HttpResponse && event.status >= 200 && event.status < 300) {
+            this.snackbarService.showSuccessSnackbar(`Request finished successfully.`, config);
+            //this.snackbarService.showSuccessSnackbar(`${event.body.statusMessage}.`, config);
           }
 
         },
