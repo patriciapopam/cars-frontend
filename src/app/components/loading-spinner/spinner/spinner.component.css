@@ -20,3 +20,7 @@
     align-items: center;
     gap: 1rem;
 }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #0c88ed;
+}
