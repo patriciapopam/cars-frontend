@@ -53,8 +53,8 @@
             </div>
 
             <div class="matformsfilterlist" id="buttons">
-                <button mat-raised-button color="primary" (click)="applyAdvancedFilter()">Apply</button>
-                <button mat-raised-button color="primary" (click)="clearFilter()">Reset</button>
+                <button mat-raised-button style="background: #0c88ed; color: white" (click)="applyAdvancedFilter()">Apply</button>
+                <button mat-raised-button style="background: #0c88ed; color: white" (click)="clearFilter()">Reset</button>
             </div>
         </div>
 
@@ -98,7 +98,7 @@
         <ng-container matColumnDef="action_delete">
             <th mat-header-cell *matHeaderCellDef mat-sort-header colspan="2"> Action </th>
             <td mat-cell *matCellDef="let row">
-                <button matTooltip="Delete car" mat-icon-button color="primary"
+                <button matTooltip="Delete car" mat-icon-button style="color: #0c88ed"
                     aria-label="Example icon button with a delete icon" (click)="deleteCar(row.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
@@ -108,7 +108,7 @@
         <ng-container matColumnDef="action_edit">
             <th mat-header-cell *matHeaderCellDef mat-sort-header hidden> </th>
             <td mat-cell *matCellDef="let row">
-                <button matTooltip="Edit car details" mat-icon-button color="primary"
+                <button matTooltip="Edit car details" mat-icon-button style="color: #0c88ed"
                     aria-label="Example icon button with a menu icon" (click)="viewCarDetails(row)">
                     <mat-icon>menu</mat-icon>
                 </button>
