@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SideNavService } from 'src/app/services/SideNavService/side-nav.service';
+import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
 
 @Component({
   selector: 'app-side-navbar',
@@ -32,9 +33,15 @@ import { SideNavService } from 'src/app/services/SideNavService/side-nav.service
  */
 
 export class SideNavbarComponent {
-  constructor(public sideNavService: SideNavService) {}
+  constructor(public sideNavService: SideNavService,
+              private addEditModalService: AddEditModalService,) {}
 
   closeSideNav(): void {
     this.sideNavService.toggleSideNav();
+  }
+
+  addCar(): void {
+    this.addEditModalService.openAddDialog();
+    this.closeSideNav();
   }
 }
