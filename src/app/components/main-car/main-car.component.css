@@ -5,17 +5,23 @@ main {
   }
   
   .hero {
-    background-color: hsla(0, 0%, 0%, 0.425);
-    background-size: cover;
+    background-image: url(/assets/background-main.jpg);
+    background-size: contain;
     background-position: center;
     height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
   }
   
   .hero-content {
     color: #000000;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    
+    
   }
   
   .hero h1 {
