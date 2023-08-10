@@ -36,7 +36,7 @@ export class AddEditModalService {
       },
     };
     this.dialogRef = this.dialog.open(AddEditModalComponent, {       
-      data: dialogData, autoFocus: false  
+      data: dialogData, autoFocus: false, panelClass: "custom-container",
     });
 
     console.log('openAddDialog')

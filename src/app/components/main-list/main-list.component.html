@@ -2,15 +2,15 @@
     Car List
 </h3>
 
-<div class="addCar mat-elevation-z8">
-    <div style="cursor: pointer" (click)="addCar()">Add car: </div>
-    <div class="material-icons expandable-buttons" (click)="addCar()"> add </div>
+<div style="cursor: pointer" (click)="addCar()" class="addCar mat-elevation-z8">
+    <div style="padding-left: 3%;"> Add car </div>
+    <div class="material-icons expandable-buttons" style="padding-right: 4%;"> library_add </div>
 </div>
 
 <div [ngClass]="{'mat-elevation-z8': isFilterShown}">
     <div class="tableFilterHeader" [ngClass]="{'mat-elevation-z8': !isFilterShown}">
-        <div>Filter cars: </div>
-        <div style="display: flex; padding-right: 1%;">
+        <div style="padding-left: 3%;">Filter cars </div>
+        <div style="display: flex; padding-right: 3%;">
             <div class="material-icons expandable-buttons" (click)="maximizeFilterMenu()"> keyboard_arrow_down </div>
             <div class="material-icons expandable-buttons" (click)="minimizeFilterMenu()"> keyboard_arrow_up </div>
         </div>

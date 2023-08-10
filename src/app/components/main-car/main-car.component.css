@@ -30,7 +30,7 @@ main {
   }
   
   .btn {
-    background-color: #007bff; 
+    background-color: #3f51b5; 
     color: #fff;
     padding: 12px 30px;
     border-radius: 5px;
@@ -39,7 +39,7 @@ main {
   }
   
   .btn:hover {
-    background-color: #0056b3; 
+    background-color: #3f51b5; 
   }
   
   .features {
@@ -56,6 +56,6 @@ main {
   .feature i {
     font-size: 48px;
     margin-bottom: 10px;
-    color: #007bff; /* Primary color accent */
+    color: #3f51b5; /* Primary color accent */
   }
   
