@@ -7,3 +7,9 @@
 
     z-index: 2;
 }
+
+.logo {
+  position: inherit;
+  max-width: 95%;
+  max-height: 95%;
+}
