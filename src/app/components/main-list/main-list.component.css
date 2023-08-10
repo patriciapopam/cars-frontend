@@ -78,8 +78,11 @@ body {
     color: white;
     display: flex;
     justify-content: space-between;
-    min-height: 28px;
+    min-height: 55px;
     align-items: center;
+
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .addCar {
@@ -89,8 +92,10 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%;
-    min-height: 28px;
+    min-height: 55px;
     align-items: center;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .expandable-buttons {

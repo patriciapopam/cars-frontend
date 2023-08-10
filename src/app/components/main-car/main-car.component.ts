@@ -13,4 +13,8 @@ export class MainCarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  wide_selection() {}
+  advanced_search() {}
+  add_cars() {}
+
 }

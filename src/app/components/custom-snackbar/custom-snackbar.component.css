@@ -1,5 +1,8 @@
-.custom-snackbar{
+::ng-deep .custom-snackbar{
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  background-color: whitesmoke;
+  opacity: 1;
+  color: black;
 }

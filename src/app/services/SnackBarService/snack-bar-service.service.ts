@@ -23,7 +23,7 @@ export class SnackbarService {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: '',
+      panelClass: 'custom-snackbar',
       politeness: 'assertive',
     };
 

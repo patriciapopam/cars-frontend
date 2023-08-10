@@ -3,7 +3,7 @@
   <div mat-dialog-title class="dialog-title">
     <div mat-dialog-title class="edit-modal-title">{{ data.title }}</div>
 
-    <button mat-icon-button matTooltip="Close" aria-label="close dialog" mat-dialog-close style="color: white;">
+    <button mat-icon-button matTooltip="Close" aria-label="close dialog" mat-dialog-close style="color: white; padding-right: 2%; margin-left: auto;">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -33,15 +33,15 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button *ngIf="!firstDisable; else alternateButton" (click)="onSubmitClick()" cdkFocusInitial
+    <button class="confirm-cancel-btn" mat-button *ngIf="!firstDisable; else alternateButton" (click)="onSubmitClick()" cdkFocusInitial
       matTooltip="{{ submitFormTooltip }}">
       {{ submitFormText }}
     </button>
 
     <ng-template #alternateButton>
-      <button mat-button matTooltip="Enable editing this car" (click)="changeFirstDisable()">Edit this car?</button>
+      <button class="confirm-cancel-btn" mat-button matTooltip="Enable editing this car" (click)="changeFirstDisable()">Edit this car?</button>
     </ng-template>
 
-    <button mat-button matTooltip="Cancel action" (click)="onCancelClick()">Cancel</button>
+    <button class="confirm-cancel-btn" mat-button matTooltip="Cancel action" (click)="onCancelClick()">Cancel</button>
   </div>
 </div>
