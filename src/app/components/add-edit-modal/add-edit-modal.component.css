@@ -42,15 +42,18 @@
     gap: 2%;
     padding: 2%;
     width: 100%;
-    text-transform: capitalize;
 
   }
   .key{
+    display: inline-block;
+    text-transform: lowercase ;
     font-weight: 450;
-
     flex: 1;
     text-align: left;
     width: 50%;
+  }
+  .key::first-letter {
+    text-transform: uppercase;
   }
 
   .value{

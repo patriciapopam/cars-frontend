@@ -108,6 +108,11 @@ export class AddEditModalComponent implements OnInit {
   }
 
   formatPropertyName(name: string): string {
-    return name.replace(/([A-Z])/g, ' $1').trim();
+    const words = name.split(/(?=[A-Z])/); // Split by capital letters
+    const transformedWords = words.map((word, index) => {
+      return word;
+    }).join(' ');
+  
+    return transformedWords;
   }
 }
