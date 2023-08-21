@@ -1,0 +1,24 @@
+<form class="login-form">
+  <h5 class="login-header">Login</h5>
+  <mat-form-field class="email-field" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      placeholder="Enter your email"
+      name="Email"
+      [(ngModel)]="email"
+    />
+  </mat-form-field>
+  <mat-form-field class="password-field" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Enter your password"
+      value=""
+      name="password"
+      type="password"
+      [(ngModel)]="password"
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+</form>

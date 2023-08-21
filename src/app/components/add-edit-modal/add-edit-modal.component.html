@@ -23,7 +23,7 @@
     <ng-template #normalForm>
       <ng-container *ngFor="let prop of carProperties">
         <mat-form-field>
-          <mat-label class="key">{{ prop.name }}</mat-label>
+          <mat-label class="key">{{ formatPropertyName(prop.name) }}</mat-label>
           <input disabled="{{ firstDisable }}" matInput [attr.type]="getInputType(prop.value)"
             [(ngModel)]="data.car[prop.name]" [ngModelOptions]="{standalone: true}" name="{{ prop.name }}"
             placeholder="{{ prop.name }}" required="true" />

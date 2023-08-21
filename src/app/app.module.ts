@@ -34,15 +34,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddEditModalComponent } from './components/add-edit-modal/add-edit-modal.component';
 import { AddEditModalButtonComponent } from './components/add-edit-modal-button/add-edit-modal-button.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {FilterListComponent} from './components/filter-list/filter-list.component';
-import {MatSelectModule} from '@angular/material/select';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FilterListComponent } from './components/filter-list/filter-list.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
-import {  MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { AuthEffects } from '../app/Ngrx/Ngrx-effects/auth.effects';
+import { authReducer } from './Ngrx/Ngrx-reducer/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -60,7 +66,8 @@ import { AddCarPageComponent } from './components/add-car-page/add-car-page.comp
     ConfirmationModalComponent,
     SideNavbarComponent,
     AddCarPageComponent,
-    
+    LoginFormComponent,
+    LoginPageComponent,
   ],
   imports: [
     RouterModule,
@@ -87,32 +94,36 @@ import { AddCarPageComponent } from './components/add-car-page/add-car-page.comp
     CustomSnackbarComponent,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     MatSelectModule,
     AddEditModalButtonComponent,
     MatSidenavModule,
     MatListModule,
-    
+    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forRoot({ auth: authReducer }),
   ],
-  providers: [ 
+  providers: [
     SpinnerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationHttpInterceptorService,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerHttpinterceptorService,
-      multi:true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SnackbarHttpService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
