@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AddEditModalButtonComponent} from '../add-edit-modal-button/add-edit-modal-button.component'
+import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
+
+
 @Component({
   selector: 'app-main-car',
   templateUrl: './main-car.component.html',
@@ -8,13 +11,13 @@ import {AddEditModalButtonComponent} from '../add-edit-modal-button/add-edit-mod
 
 export class MainCarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private addEditModalService: AddEditModalService,) { }
 
   ngOnInit(): void {
   }
 
-  wide_selection() {}
-  advanced_search() {}
-  add_cars() {}
+  addCar(): void {
+    this.addEditModalService.openAddDialog();
+  }
 
 }

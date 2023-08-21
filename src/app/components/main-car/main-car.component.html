@@ -4,23 +4,24 @@
       <div class="hero-content">
         <h1>Welcome to Car Website</h1>
         <p>Find your dream car here.</p>
-        <a routerLink="/car-list" class="btn">Browse cars</a>
       </div>
     </section>
   
     <!-- Features section -->
     <section class="features">
-      <div class="feature">
-        <h2 style="cursor: pointer" onclick="wide_selection()">Wide Selection</h2>
-        <p>Choose from a wide range of cars.</p>
+      <div class="feature" style="cursor: pointer" routerLink="/car-list">
+        <h2 >Wide selection</h2>
+        <p class="extra-text">Choose from a wide range of cars.</p>
       </div>
-      <div class="feature">
-        <h2 style="cursor: pointer" onclick="advanced_search()">Advanced Search</h2>
-        <p>Use our advanced search to find your perfect car.</p>
+
+      <div class="feature-middle" style="cursor: pointer" routerLink="/car-list" >
+        <h2 >Advanced search</h2>
+        <p class="extra-text">Use our advanced search to find your perfect car.</p>
       </div>
-      <div class="feature">
-        <h2 style="cursor: pointer" onclick="add_cars()">Add cars</h2>
-        <p>Add all the cars you want.</p>
+
+      <div class="feature" style="cursor: pointer" (click)="addCar()">
+        <h2 >Add cars</h2>
+        <p class="extra-text">Add all the cars you want.</p>
       </div>
     </section>
   </main>
