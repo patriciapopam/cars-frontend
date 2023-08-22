@@ -30,7 +30,7 @@ export class AddEditModalComponent implements OnInit {
   ngOnInit(): void {
     this.firstDisable = this.data.mode === 'edit' ? true : false;
     this.carProperties = this.getCarProperties();
-    this.submitFormText = this.data.mode === 'add' ? 'Add car' : 'Edit car';
+    this.submitFormText = this.data.mode === 'add' ? 'Add car' : 'Save';
     this.submitFormTooltip = this.data.mode === 'add' ? 'Add a new car' : 'Edit this car';
     this.formGroup = this.formBuilder.group({});
     this.carProperties.forEach((prop) => {
@@ -110,9 +110,14 @@ export class AddEditModalComponent implements OnInit {
   formatPropertyName(name: string): string {
     const words = name.split(/(?=[A-Z])/); // Split by capital letters
     const transformedWords = words.map((word, index) => {
-      return word;
+      if (index === 0) {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      } else {
+        return word.toLowerCase();
+      }
     }).join(' ');
   
     return transformedWords;
   }
+  
 }
