@@ -43,6 +43,7 @@ import { SideNavbarComponent } from './components/side-navbar/side-navbar.compon
 import {  MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { AddCarPageComponent } from './components/add-car-page/add-car-page.comp
     AddEditModalButtonComponent,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule,
     
   ],
   providers: [ 
