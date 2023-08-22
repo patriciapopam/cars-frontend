@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { CarObject } from 'src/models/CarObject';
 import { User } from '../../../models/User';
 @Injectable({
@@ -101,6 +101,8 @@ export class HttpClientService {
   }
 
   getUserInfo(): Observable<any> {
-    return this.http.get(`${this.backendUrl}/data/profile`);
+    return this.http
+      .get(`${this.backendUrl}/data/profile`)
+      .pipe(map((response) => response));
   }
 }

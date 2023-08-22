@@ -22,8 +22,6 @@ export class LoginFormComponent {
 
     if (await this.authService.login(this.email, this.password)) {
       this.SnackBarService.showSuccessSnackbar('Login successful');
-      console.log('Login successful');
-      console.log(this.authService.isUserLoggedIn());
       this.clear();
       // this.router.navigate(['/home']);
       this.router.navigate(['/']);

@@ -9,22 +9,29 @@ import { LocalStorageService } from '../LocalStorageService/local-storage.servic
 export class AuthService {
   constructor(
     private httpClient: HttpClientService,
-    private LocalStorageService: LocalStorageService
+    private localStorageService: LocalStorageService
   ) {}
+
   public user: User | null = null;
   public isLoggedIn: boolean = false;
+
+  private startupCheck() {
+    console.log('Auth service init');
+    if (this.localStorageService.getItem('JWT Token') !== null) {
+      this.isLoggedIn = true;
+    }
+  }
+
   async login(email: string, password: string): Promise<boolean> {
     const response = await this.httpClient.login(email, password).toPromise();
-    console.log(response.body); // Log the entire response body
 
     const accessToken = response.body?.accessToken;
     if (accessToken) {
-      console.log(accessToken);
-
       //temporary if because of BE Error
       if (accessToken !== 'adcdef') {
         this.isLoggedIn = true;
-        this.LocalStorageService.setItem('JWT Token', accessToken);
+        this.localStorageService.setItem('JWT Token', accessToken);
+        await this.getUserInfo();
         return true;
       }
       return false;
@@ -42,30 +49,30 @@ export class AuthService {
   }
 
   async getUserInfo(): Promise<User | null> {
+    console.log('Getting user info');
     const result = await this.httpClient.getUserInfo().toPromise();
-    if (result.success) {
+
+    const responseBody = result as any; // Cast to 'any' to access properties
+
+    if (responseBody) {
+      // Check if the response body is not null or undefined
+      console.log(responseBody);
+
       const user: User = {
-        email: result.body.email,
-        firstName: result.body.firstName,
-        lastName: result.body.lastName,
-        username: result.body.username,
+        email: responseBody.email,
+        firstName: responseBody.firstName,
+        lastName: responseBody.lastName,
+        username: responseBody.username,
       };
       this.user = user;
-      console.log(user);
+
       return user;
     }
-    return null;
-  }
 
-  isUserLoggedIn(): boolean {
-    return this.user !== null;
+    return null;
   }
 
   getLoggedInUser(): User | null {
     return this.user;
   }
-
-  // get isLoggedIn(): boolean {
-  //   return this.isUserLoggedIn();
-  // }
 }
