@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AddEditModalButtonComponent} from '../add-edit-modal-button/add-edit-modal-button.component'
 import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-modal-service.service';
+import { FilterShownService } from 'src/app/services/FilterShownService/filter-shown.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { AddEditModalService } from 'src/app/services/EditModalService/add-edit-
 
 export class MainCarComponent implements OnInit {
 
-  constructor(private addEditModalService: AddEditModalService,) { }
+  constructor(private addEditModalService: AddEditModalService,
+              public showService: FilterShownService,) { }
 
   ngOnInit(): void {
   }
@@ -19,5 +21,13 @@ export class MainCarComponent implements OnInit {
   addCar(): void {
     this.addEditModalService.openAddDialog();
   }
+
+  filterShow():void {
+    this.showService.filterShow();
+    }
+  
+    filterHide():void {
+      this.showService.filterHide();
+    }
 
 }
