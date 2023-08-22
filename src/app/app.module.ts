@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule } from '@angular/router';
@@ -46,6 +46,11 @@ import { AddCarPageComponent } from './components/add-car-page/add-car-page.comp
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from './services/AuthService/auth-services.service';
+
+export function appInitializer(authService: AuthService) {
+  return () => authService.startupCheck();
+}
 
 @NgModule({
   declarations: [
@@ -118,6 +123,13 @@ import { MatMenuModule } from '@angular/material/menu';
       provide: HTTP_INTERCEPTORS,
       useClass: SnackbarHttpService,
       multi: true,
+    },
+    AuthService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+      multi: true,
+      deps: [AuthService],
     },
   ],
   bootstrap: [AppComponent],

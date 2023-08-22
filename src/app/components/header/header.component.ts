@@ -34,6 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   test(): void {
-    console.log(this.authService.isLoggedIn);
+    console.log(this.authService.user);
   }
 }

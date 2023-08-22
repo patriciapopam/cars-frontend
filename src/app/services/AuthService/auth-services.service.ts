@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from 'src/models/User';
 import { HttpClientService } from '../HttpClientService/HttpClientService.service'; // Import other services here
 import { LocalStorageService } from '../LocalStorageService/local-storage.service';
+import { SpinnerService } from '../SpinnerService/spinner-service.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +11,23 @@ import { LocalStorageService } from '../LocalStorageService/local-storage.servic
 export class AuthService {
   constructor(
     private httpClient: HttpClientService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private spinnerService: SpinnerService,
+    private router: Router
   ) {}
 
   public user: User | null = null;
   public isLoggedIn: boolean = false;
 
-  private startupCheck() {
+  public startupCheck() {
     console.log('Auth service init');
     if (this.localStorageService.getItem('JWT Token') !== null) {
+      this.spinnerService.show();
       this.isLoggedIn = true;
+      this.getUserInfo();
+      this.spinnerService.hide();
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 
@@ -55,9 +64,6 @@ export class AuthService {
     const responseBody = result as any; // Cast to 'any' to access properties
 
     if (responseBody) {
-      // Check if the response body is not null or undefined
-      console.log(responseBody);
-
       const user: User = {
         email: responseBody.email,
         firstName: responseBody.firstName,
