@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { FormControl } from '@angular/forms';
 import { CarObject } from 'src/models/CarObject';
+import { FilterShownService } from 'src/app/services/FilterShownService/filter-shown.service';
 
 @Component({
   selector: 'app-main-list',
@@ -20,7 +21,7 @@ export class MainListComponent implements OnInit {
 
   carList: MatTableDataSource<any>;
   displayedColumns: string[] = ['brand', 'category', 'model', 'year', 'action_delete', 'action_edit'];
-  public isFilterShown: boolean = false;
+  public isFilterShown: boolean = this.showService.filterShown;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,6 +29,7 @@ export class MainListComponent implements OnInit {
   constructor(private httpService: HttpClientService,
               private filterCarsService: FilterCarsService,
               private addEditModalService: AddEditModalService,
+              public showService: FilterShownService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -55,13 +57,15 @@ export class MainListComponent implements OnInit {
     });
   }
 
-  maximizeFilterMenu() {
-    this.isFilterShown = true;
+  filterShow():void {
+  this.showService.filterShow();
+  this.isFilterShown = this.showService.filterShown;
   }
 
-  minimizeFilterMenu() {
-    this.isFilterShown = false;
-  }
+  filterHide():void {
+    this.showService.filterHide();
+    this.isFilterShown = this.showService.filterShown;
+    }
 
   addCar() {
     this.addEditModalService.openAddDialog();

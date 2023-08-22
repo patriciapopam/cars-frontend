@@ -9,12 +9,12 @@
   
     <!-- Features section -->
     <section class="features">
-      <div class="feature" style="cursor: pointer" routerLink="/car-list">
+      <div class="feature" style="cursor: pointer" (click)="filterHide()" routerLink="/car-list">
         <h2 >Wide selection</h2>
         <p class="extra-text">Choose from a wide range of cars.</p>
       </div>
 
-      <div class="feature-middle" style="cursor: pointer" routerLink="/car-list" >
+      <div class="feature-middle" style="cursor: pointer" (click)="filterShow()" routerLink="/car-list" >
         <h2 >Advanced search</h2>
         <p class="extra-text">Use our advanced search to find your perfect car.</p>
       </div>

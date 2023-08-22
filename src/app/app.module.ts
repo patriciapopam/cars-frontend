@@ -49,6 +49,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { AuthEffects } from '../app/Ngrx/Ngrx-effects/auth.effects';
 import { authReducer } from './Ngrx/Ngrx-reducer/auth.reducer';
+import {MatMenuModule} from '@angular/material/menu';
+import { FilterShownService } from './services/FilterShownService/filter-shown.service';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,7 @@ import { authReducer } from './Ngrx/Ngrx-reducer/auth.reducer';
     AddEditModalButtonComponent,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule,
     EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot({ auth: authReducer }),
   ],
