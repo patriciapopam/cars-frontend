@@ -14,13 +14,13 @@ export class LoginFormComponent {
     private SnackBarService: SnackbarService,
     private router: Router
   ) {}
-  email: string = '';
+  username: string = '';
   password: string = '';
 
   async submit() {
-    console.log('user name is ' + this.email);
+    console.log('user name is ' + this.username);
 
-    if (await this.authService.login(this.email, this.password)) {
+    if (await this.authService.login(this.username, this.password)) {
       this.SnackBarService.showSuccessSnackbar('Login successful');
       this.clear();
       // this.router.navigate(['/home']);
@@ -31,7 +31,7 @@ export class LoginFormComponent {
     }
   }
   clear() {
-    this.email = '';
+    this.username = '';
     this.password = '';
   }
 }

@@ -31,8 +31,10 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string): Promise<boolean> {
-    const response = await this.httpClient.login(email, password).toPromise();
+  async login(username: string, password: string): Promise<boolean> {
+    const response = await this.httpClient
+      .login(username, password)
+      .toPromise();
 
     const accessToken = response.body?.accessToken;
     if (accessToken) {
