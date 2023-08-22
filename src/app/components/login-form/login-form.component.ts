@@ -15,33 +15,18 @@ export class LoginFormComponent {
   email: string = '';
   password: string = '';
 
-  submit() {
+  async submit() {
     console.log('user name is ' + this.email);
-    this.authService.login(this.email, this.password).subscribe(
-      (response) => {
-        // Check the status code and handle it accordingly
-        if (response.status === 200) {
-          // Successful login
-          this.SnackBarService.showSuccessSnackbar('Login successful');
-        } else if (response.status === 403) {
-          console.log('Status code 403: Forbidden');
-          this.SnackBarService.showErrorSnackbar(
-            'Username or password incorrect'
-          );
-          // Handle forbidden access
-        }
-      },
-      (error) => {
-        console.log('Login error:', error);
-        this.SnackBarService.showErrorSnackbar(
-          'Login failed, check console output for details'
-        );
-        // Handle error cases
-      }
-    );
-    this.clear();
-  }
 
+    if (await this.authService.login(this.email, this.password)) {
+      this.SnackBarService.showSuccessSnackbar('Login successful');
+      console.log('Login successful');
+      console.log(this.authService.isUserLoggedIn());
+    } else {
+      this.SnackBarService.showErrorSnackbar('Username or password incorrect');
+      this.clear();
+    }
+  }
   clear() {
     this.email = '';
     this.password = '';

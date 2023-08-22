@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CarObject } from 'src/models/CarObject';
-
+import { User } from '../../../models/User';
 @Injectable({
   providedIn: 'root',
 })
@@ -93,8 +93,12 @@ export class HttpClientService {
     );
   }
 
-  login(email: string, password: string): Observable<any> {
-    const body = { email, password };
-    return this.http.post(`${this.backendUrl}/login`, body);
+  login(username: string, password: string): Observable<any> {
+    const body = { username, password };
+    return this.http.post(`${this.backendUrl}/data/login`, body);
+  }
+
+  getUserInfo(): Observable<any> {
+    return this.http.get(`${this.backendUrl}/data/profile`);
   }
 }

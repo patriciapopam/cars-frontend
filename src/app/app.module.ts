@@ -45,12 +45,7 @@ import { MatListModule } from '@angular/material/list';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
-import { EffectsModule } from '@ngrx/effects';
-import { Store, StoreModule } from '@ngrx/store';
-import { AuthEffects } from '../app/Ngrx/Ngrx-effects/auth.effects';
-import { authReducer } from './Ngrx/Ngrx-reducer/auth.reducer';
-import {MatMenuModule} from '@angular/material/menu';
-import { FilterShownService } from './services/FilterShownService/filter-shown.service';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -106,8 +101,6 @@ import { FilterShownService } from './services/FilterShownService/filter-shown.s
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    EffectsModule.forRoot([AuthEffects]),
-    StoreModule.forRoot({ auth: authReducer }),
   ],
   providers: [
     SpinnerService,
