@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/models/User';
 import { HttpClientService } from '../HttpClientService/HttpClientService.service'; // Import other services here
+import { LocalStorageService } from '../LocalStorageService/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClientService) {}
-  private user: User | null = null;
-
+  constructor(
+    private httpClient: HttpClientService,
+    private LocalStorageService: LocalStorageService
+  ) {}
+  public user: User | null = null;
+  public isLoggedIn: boolean = false;
   async login(email: string, password: string): Promise<boolean> {
     const response = await this.httpClient.login(email, password).toPromise();
     console.log(response.body); // Log the entire response body
@@ -16,9 +20,14 @@ export class AuthService {
     const accessToken = response.body?.accessToken;
     if (accessToken) {
       console.log(accessToken);
-      localStorage.setItem('JWT Token', accessToken);
+
       //temporary if because of BE Error
-      return true;
+      if (accessToken !== 'adcdef') {
+        this.isLoggedIn = true;
+        this.LocalStorageService.setItem('JWT Token', accessToken);
+        return true;
+      }
+      return false;
     } else {
       console.error('Access token not found in response body');
       return false;
@@ -27,7 +36,9 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('JWT Token');
     this.user = null;
+    this.isLoggedIn = false;
   }
 
   async getUserInfo(): Promise<User | null> {
@@ -40,7 +51,7 @@ export class AuthService {
         username: result.body.username,
       };
       this.user = user;
-      localStorage.setItem('user', JSON.stringify(user));
+      console.log(user);
       return user;
     }
     return null;
@@ -53,4 +64,8 @@ export class AuthService {
   getLoggedInUser(): User | null {
     return this.user;
   }
+
+  // get isLoggedIn(): boolean {
+  //   return this.isUserLoggedIn();
+  // }
 }

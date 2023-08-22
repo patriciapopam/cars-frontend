@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/AuthService/auth-services.service';
 import { SnackbarService } from 'src/app/services/SnackBarService/snack-bar-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -10,7 +11,8 @@ import { SnackbarService } from 'src/app/services/SnackBarService/snack-bar-serv
 export class LoginFormComponent {
   constructor(
     private authService: AuthService,
-    private SnackBarService: SnackbarService
+    private SnackBarService: SnackbarService,
+    private router: Router
   ) {}
   email: string = '';
   password: string = '';
@@ -22,6 +24,9 @@ export class LoginFormComponent {
       this.SnackBarService.showSuccessSnackbar('Login successful');
       console.log('Login successful');
       console.log(this.authService.isUserLoggedIn());
+      this.clear();
+      // this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     } else {
       this.SnackBarService.showErrorSnackbar('Username or password incorrect');
       this.clear();

@@ -1,3 +1,10 @@
 <app-header></app-header>
-<app-login-form></app-login-form>
+<div *ngIf="authService.isLoggedIn; else loginForm">
+  <!-- Navigate to home page -->
+  <div>already logged in</div>
+</div>
+<ng-template #loginForm>
+  <!-- Display login form -->
+  <app-login-form></app-login-form>
+</ng-template>
 <app-footer></app-footer>

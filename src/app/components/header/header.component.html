@@ -1,44 +1,52 @@
 <mat-toolbar class="mat-elevation-z8">
-    
-    <img class="logo" src="/assets/car.png">
-    
-    <a>
-        <button mat-icon-button style="color: #0c88ed; padding-left: 20%;" (click)="toggleSideNav()" aria-label="Go to menu button" >
-        <mat-icon>menu</mat-icon>
-        </button>
-    </a>
+  <img class="logo" src="/assets/car.png" />
 
-    <a routerLink="/">
-    <button mat-icon-button style="color: #0c88ed" aria-label="Go to main page button">
-        <mat-icon>home</mat-icon>
+  <a>
+    <button
+      mat-icon-button
+      style="color: #0c88ed; padding-left: 20%"
+      (click)="toggleSideNav()"
+      aria-label="Go to menu button"
+    >
+      <mat-icon>menu</mat-icon>
     </button>
-    </a>
+  </a>
 
-    Car App
-    <span></span>
-    <span class="example-spacer"></span>
-
-
-    <span style="font-size: 70%"> {{username}} </span>
-    
-    <span></span>
-    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu" aria-label="Example icon-button with account_circle icon" >
-      <mat-icon>account_circle</mat-icon>
+  <a routerLink="/">
+    <button
+      mat-icon-button
+      style="color: #0c88ed"
+      aria-label="Go to main page button"
+    >
+      <mat-icon>home</mat-icon>
     </button>
+  </a>
 
+  Car App
+  <span></span>
+  <span class="example-spacer"></span>
 
-    <mat-menu #menu="matMenu">
-        <button style="font-size: 120%" mat-menu-item>
-            <mat-icon style="color: #0c88ed">account_box</mat-icon>
-            <span>Profile</span>
-        </button>
-        <button style="font-size: 120%" mat-menu-item routerLink="/">
-            <mat-icon style="color: #0c88ed">exit_to_app</mat-icon>
-        <span>Logout</span>
-        </button>
-    </mat-menu>
-    
+  <span style="font-size: 70%"> {{ this.authService.isLoggedIn }} </span>
 
+  <span></span>
+  <button
+    mat-icon-button
+    class="example-icon"
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with account_circle icon"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </button>
 
+  <mat-menu #menu="matMenu">
+    <button style="font-size: 120%" mat-menu-item (click)="test()">
+      <mat-icon style="color: #0c88ed">account_box</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button style="font-size: 120%" mat-menu-item (click)="logout()">
+      <mat-icon style="color: #0c88ed">exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 <app-side-navbar></app-side-navbar>

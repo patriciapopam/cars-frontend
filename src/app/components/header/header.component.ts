@@ -1,26 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { SideNavService } from 'src/app/services/SideNavService/side-nav.service';
-import {MatMenuModule} from '@angular/material/menu';
-
-
+import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from 'src/app/services/AuthService/auth-services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  
 })
-
 export class HeaderComponent implements OnInit {
+  getUsername(): string {
+    return this.authService.isLoggedIn ? 'logged in' : 'not logged in';
+  }
 
-  username: string = "Patricia Popa";
+  constructor(
+    private sideNavService: SideNavService,
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
-  constructor(private sideNavService:SideNavService) {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   toggleSideNav(): void {
     this.sideNavService.toggleSideNav();
+  }
+
+  test(): void {
+    console.log(this.authService.isLoggedIn);
   }
 }
