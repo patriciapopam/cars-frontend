@@ -95,7 +95,9 @@ export class HttpClientService {
 
   login(username: string, password: string): Observable<any> {
     const body = { username, password };
-    return this.http.post(`${this.backendUrl}/data/login`, body);
+    return this.http.post(`${this.backendUrl}/data/login`, body, {
+      observe: 'response',
+    });
   }
 
   getUserInfo(): Observable<any> {

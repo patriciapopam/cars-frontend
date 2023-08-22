@@ -1,77 +1,56 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/models/User';
 import { HttpClientService } from '../HttpClientService/HttpClientService.service'; // Import other services here
-import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private static instance: AuthService;
-  private isLoggedIn: boolean = false;
-  private currentUser: User | null = null;
+  constructor(private httpClient: HttpClientService) {}
+  private user: User | null = null;
 
-  // Inject other services in the constructor
-  constructor(private httpClientService: HttpClientService) {
-    // Private constructor to enforce Singleton pattern
-  }
+  async login(email: string, password: string): Promise<boolean> {
+    const response = await this.httpClient.login(email, password).toPromise();
+    console.log(response.body); // Log the entire response body
 
-  static getInstance(httpClientService: HttpClientService): AuthService {
-    if (!AuthService.instance) {
-      AuthService.instance = new AuthService(httpClientService);
-    }
-    return AuthService.instance;
-  }
-
-  async login(username: string, password: string): Promise<boolean> {
-    try {
-      const response = await this.httpClientService
-        .login(username, password)
-        .toPromise();
-      if (response.status === 200) {
-        this.isLoggedIn = true;
-        console.log('Login successful');
-        console.log(response.body('accessToken'));
-        localStorage.setItem('JWT Token', response.body('accessToken'));
-        this.fetchUserInfo();
-        return true;
-      } else {
-        this.isLoggedIn = false;
-        this.currentUser = null;
-        return false;
-      }
-    } catch (error) {
-      console.log('Login error:', error);
-      this.isLoggedIn = false;
-      this.currentUser = null;
+    const accessToken = response.body?.accessToken;
+    if (accessToken) {
+      console.log(accessToken);
+      localStorage.setItem('JWT Token', accessToken);
+      //temporary if because of BE Error
+      return true;
+    } else {
+      console.error('Access token not found in response body');
       return false;
     }
   }
 
-  fetchUserInfo() {
-    this.httpClientService.getUserInfo().pipe(
-      map((response: any) => {
-        let user: User = {
-          username: response.username,
-          email: response.email,
-          firstName: response.firstName,
-          lastName: response.lastName,
-        };
-        this.currentUser = user;
-      })
-    );
-  }
-
   logout() {
-    this.isLoggedIn = false;
-    this.currentUser = null;
+    localStorage.removeItem('user');
+    this.user = null;
   }
 
-  getCurrentUser(): User | null {
-    return this.currentUser;
+  async getUserInfo(): Promise<User | null> {
+    const result = await this.httpClient.getUserInfo().toPromise();
+    if (result.success) {
+      const user: User = {
+        email: result.body.email,
+        firstName: result.body.firstName,
+        lastName: result.body.lastName,
+        username: result.body.username,
+      };
+      this.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+    }
+    return null;
   }
 
   isUserLoggedIn(): boolean {
-    return this.isLoggedIn;
+    return this.user !== null;
+  }
+
+  getLoggedInUser(): User | null {
+    return this.user;
   }
 }
