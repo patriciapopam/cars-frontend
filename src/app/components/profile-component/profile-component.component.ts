@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/AuthService/auth-services.service';
 
 @Component({
   selector: 'app-profile-component',
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-component.component.css'],
 })
 export class ProfileComponentComponent {
-  constructor() {}
-  firstName: string = 'John';
-  lastName: string = 'Doe';
-  username: string = 'johndoe';
-  email: string = 'john@example.com';
+  constructor(public authService: AuthService) {}
+
+  firstName: string = this.authService.user!.firstName;
+  lastName: string = this.authService.user!.lastName;
+  username: string = this.authService.user!.username;
+  email: string = this.authService.user!.email;
 
   saveChanges() {
     // Implement logic to save changes to a backend or perform desired actions

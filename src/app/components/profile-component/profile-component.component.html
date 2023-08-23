@@ -1,25 +1,31 @@
-<form class="profile-form">
-  <mat-form-field>
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="firstName" name="firstName" />
-  </mat-form-field>
+<main class="main-container">
+  <div>
+    <h1>Hello, {{ firstName }} {{ lastName }}</h1>
+    <p>Here you can update your profile informations</p>
+  </div>
+  <form class="profile-form">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="firstName" name="firstName" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="lastName" name="lastName" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="lastName" name="lastName" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="username" name="username" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" name="username" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="email" name="email" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" name="email" />
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="saveChanges()">
-    Save
-  </button>
-</form>
+    <button mat-raised-button color="primary" (click)="saveChanges()">
+      Save
+    </button>
+  </form>
+</main>
