@@ -33,10 +33,7 @@ export class HeaderComponent implements OnInit {
     this.sideNavService.toggleSideNav();
   }
 
-
   goToProfile(): void {
     this.router.navigate(['/profile']);
-  test(): void {
-    console.log(this.authService.user);
   }
 }
