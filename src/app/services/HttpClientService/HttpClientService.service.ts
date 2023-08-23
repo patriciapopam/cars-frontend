@@ -105,4 +105,15 @@ export class HttpClientService {
       .get(`${this.backendUrl}/data/profile`)
       .pipe(map((response) => response));
   }
+
+  updateUser(userData: {
+    username: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+  }): Observable<any> {
+    return this.http
+      .put(`${this.backendUrl}/data/profile`, userData, {})
+      .pipe(map((response) => response));
+  }
 }
