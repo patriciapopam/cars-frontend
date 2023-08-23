@@ -47,6 +47,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from './services/AuthService/auth-services.service';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ProfileComponentComponent } from './components/profile-component/profile-component.component';
 
 export function appInitializer(authService: AuthService) {
   return () => authService.startupCheck();
@@ -70,6 +72,8 @@ export function appInitializer(authService: AuthService) {
     AddCarPageComponent,
     LoginFormComponent,
     LoginPageComponent,
+    ProfilePageComponent,
+    ProfileComponentComponent,
   ],
   imports: [
     RouterModule,
