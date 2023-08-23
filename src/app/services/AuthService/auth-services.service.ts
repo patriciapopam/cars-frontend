@@ -25,6 +25,7 @@ export class AuthService {
       this.spinnerService.show();
       this.isLoggedIn = true;
       await this.getUserInfo();
+
       this.spinnerService.hide();
     } else {
       this.router.navigate(['/login']);

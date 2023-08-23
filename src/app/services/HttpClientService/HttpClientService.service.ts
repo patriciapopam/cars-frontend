@@ -115,5 +115,6 @@ export class HttpClientService {
     return this.http
       .put(`${this.backendUrl}/data/profile`, userData, {})
       .pipe(map((response) => response));
+
   }
 }

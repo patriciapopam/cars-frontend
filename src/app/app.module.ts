@@ -50,6 +50,7 @@ import { AuthService } from './services/AuthService/auth-services.service';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { ProfileComponentComponent } from './components/profile-component/profile-component.component';
 
+
 export function appInitializer(authService: AuthService) {
   return () => authService.startupCheck();
 }
@@ -74,6 +75,7 @@ export function appInitializer(authService: AuthService) {
     LoginPageComponent,
     ProfilePageComponent,
     ProfileComponentComponent,
+
   ],
   imports: [
     RouterModule,
