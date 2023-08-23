@@ -4,8 +4,13 @@
   <a>
     <button
       mat-icon-button
-      style="color: #0c88ed; padding-left: 20%"
+      [style]="this.authService.isLoggedIn ? 'color:#0c88ed' : 'color:grey'"
       (click)="toggleSideNav()"
+      matTooltip="{{
+        !this.authService.isLoggedIn
+          ? 'You must be logged in to see the main page'
+          : 'Open menu'
+      }}"
       aria-label="Go to menu button"
       [disabled]="!this.authService.isLoggedIn"
     >
@@ -16,7 +21,14 @@
   <a routerLink="/">
     <button
       mat-icon-button
-      style="color: #0c88ed"
+      matTooltip="
+        {{
+        this.authService.isLoggedIn
+          ? 'Go to main page'
+          : 'You must be logged in to see the main page'
+      }}
+      "
+      [style]="this.authService.isLoggedIn ? 'color:#0c88ed' : 'color:grey'"
       aria-label="Go to main page button"
       [disabled]="!this.authService.isLoggedIn"
     >
