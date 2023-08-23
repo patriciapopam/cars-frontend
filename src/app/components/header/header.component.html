@@ -58,6 +58,7 @@
       mat-menu-item
       (click)="goToProfile()"
       *ngIf="this.authService.isLoggedIn"
+      matTooltip="{{ this.authService.isLoggedIn ? 'Go to profile' : '' }}"
     >
       <mat-icon style="color: #0c88ed">account_box</mat-icon>
       <span>Profile</span>
