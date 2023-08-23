@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-
+//TODO: change the service to use https://coreui.io/angular/docs/components/toast
 @Component({
   selector: 'app-custom-snackbar',
   templateUrl: './custom-snackbar.component.html',
@@ -20,7 +20,6 @@ export class CustomSnackbarComponent implements OnInit {
   @Input() message: string = '';
   emoji:string | undefined ;
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {}
-
   ngOnInit(): void {
     this.icon = this.data.icon; // Set the icon value from the data passed by the service
     this.message = this.data.message; // Set the message value from the data passed by the service
