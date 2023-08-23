@@ -19,12 +19,13 @@ export class AuthService {
   public user: User | null = null;
   public isLoggedIn: boolean = false;
 
-  public startupCheck() {
+  public async startupCheck() {
     console.log('Auth service init');
     if (this.localStorageService.getItem('JWT Token') !== null) {
       this.spinnerService.show();
       this.isLoggedIn = true;
-      this.getUserInfo();
+      await this.getUserInfo();
+
       this.spinnerService.hide();
     } else {
       this.router.navigate(['/login']);

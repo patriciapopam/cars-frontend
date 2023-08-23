@@ -20,5 +20,13 @@
       [(ngModel)]="password"
     />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    matTooltip="Login to your account"
+    (click)="submit()"
+  >
+    Login
+  </button>
 </form>

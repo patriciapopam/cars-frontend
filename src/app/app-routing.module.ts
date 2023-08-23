@@ -4,12 +4,15 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarAppComponent } from './components/car-app/car-app.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+
 
 const routes: Routes = [
   { path: 'car-list', component: CarListComponent },
   { path: 'car-detail', component: CarDetailComponent },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: CarAppComponent },
+  { path: 'profile', component: ProfilePageComponent },
 ];
 
 @NgModule({

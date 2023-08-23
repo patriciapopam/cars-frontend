@@ -1,0 +1,19 @@
+.profile-form {
+  margin: 5vh;
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping to create multiple rows */
+  justify-content: space-between; /* Distribute items evenly between rows */
+  width: 50%;
+}
+
+/* Adjust individual field width to fit two per row */
+.mat-form-field {
+  width: calc(50% - 10px); /* Subtracting margins for even spacing */
+}
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5vh;
+}

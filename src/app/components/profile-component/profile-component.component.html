@@ -1,0 +1,55 @@
+<main class="main-container">
+  <div>
+    <h1>Hello, {{ firstNameCopy }} {{ lastNameCopy }}</h1>
+    <p>Here you can update your profile information</p>
+  </div>
+  <form class="profile-form">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="firstName"
+        name="firstName"
+        [disabled]="fieldsDisabled"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="lastName"
+        name="lastName"
+        [disabled]="fieldsDisabled"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        [(ngModel)]="username"
+        name="username"
+        [disabled]="fieldsDisabled"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        [(ngModel)]="email"
+        name="email"
+        [disabled]="fieldsDisabled"
+      />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="fieldsDisabled ? editProfile() : saveChanges()"
+    >
+      {{ fieldsDisabled ? "Edit" : "Save" }}
+    </button>
+  </form>
+</main>

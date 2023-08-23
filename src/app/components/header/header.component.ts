@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   getUsername(): string {
     return this.authService.isLoggedIn
       ? this.authService.user?.firstName + ' ' + this.authService.user?.lastName
-      : 'not logged in';
+      : '';
   }
 
   constructor(
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
     this.sideNavService.toggleSideNav();
   }
 
-  test(): void {
-    console.log(this.authService.user);
+  goToProfile(): void {
+    this.router.navigate(['/profile']);
   }
 }
