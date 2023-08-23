@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/AuthService/auth-services.service';
 
 @Component({
@@ -7,7 +8,11 @@ import { AuthService } from 'src/app/services/AuthService/auth-services.service'
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['/']);
+    }
+  }
 }
